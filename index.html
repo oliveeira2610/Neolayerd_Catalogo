@@ -1,1416 +1,1282 @@
 <!doctype html>
 <html lang="pt-BR">
-  <head>
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta
-      name="description"
-      content="Catálogo de impressões 3D de alta qualidade"
-    />
+    <meta name="description" content="Catálogo de impressões 3D de alta qualidade" />
     <title>NeoLayerd 3D</title>
     <style>
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-      }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --accent: #ff6b35;
+            --primary: #0052cc;
+            --primary-dark: #003d99;
+            --primary-light: #e6f0ff;
+            --secondary: #00e676;
+            --dark: #0a2a3b;
+            --light: #ffffff;
+            --gray-50: #f8fafc;
+            --gray-100: #f1f5f9;
+            --gray-200: #e2e8f0;
+            --gray-300: #cbd5e1;
+            --gray-500: #64748b;
+            --gray-700: #334155;
+            --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.12);
+            --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.1);
+            --radius-sm: 0.375rem;
+            --radius-md: 0.5rem;
+            --radius-lg: 0.75rem;
+            --transition: all 0.2s ease;
+        }
+
+        body {
+            font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            background-color: var(--gray-50);
+            color: var(--gray-700);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: "Poppins", sans-serif;
+            font-weight: 600;
+            line-height: 1.3;
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        /* Header Moderno */
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            background: #0A2A3B;
+            border-bottom: 1px solid #00E676;
+            box-shadow: var(--shadow-sm);
+        }
+
+        /* Header Top Row - Logo e Botão de Busca */
+        .header-top {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1rem 0;
+            gap: 1rem;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            flex-shrink: 0;
+        }
+
+        .logo {
+            width: 40px;
+            height: 40px;
+            object-fit: contain;
+            transition: var(--transition);
+        }
+
+        .brand-text h1 {
+            font-size: 1.25rem;
+            color: white;
+            margin-bottom: 0.125rem;
+            line-height: 1.2;
+        }
+
+        .brand-text p {
+            font-size: 0.75rem;
+            color: rgb(187, 187, 187);
+            display: none;
+        }
+
+        /* Botão de busca para mobile */
+        .search-toggle {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: white;
+            padding: 0.5rem;
+            border-radius: var(--radius-sm);
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            flex-shrink: 0;
+        }
+
+        .search-toggle:hover {
+            background: rgba(255, 255, 255, 0.15);
+            border-color: var(--secondary);
+        }
+
+        /* Barra de busca expandida */
+        .header-search-container {
+            display: none;
+            padding: 0 0 1rem 0;
+            animation: slideDown 0.3s ease-out;
+        }
+
+        .header-search-container.active {
+            display: block;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .search-wrapper {
+            position: relative;
+            width: 100%;
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: rgba(255, 255, 255, 0.8);
+            pointer-events: none;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 0.875rem 1rem 0.875rem 3rem;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            border-radius: var(--radius-md);
+            font-size: 1rem;
+            transition: var(--transition);
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+        }
+
+        .search-input::placeholder {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .search-input:focus {
+            outline: none;
+            border-color: var(--secondary);
+            background: rgba(255, 255, 255, 0.15);
+            box-shadow: 0 0 0 3px rgba(0, 230, 118, 0.2);
+        }
+
+        .search-clear {
+            position: absolute;
+            right: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: rgba(255, 255, 255, 0.6);
+            padding: 0.25rem;
+            border-radius: 50%;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            display: none;
+        }
+
+        .search-clear:hover {
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+        }
+
+        /* Versão Desktop da busca */
+        .desktop-search {
+            display: none;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 3rem 0;
+            color: white;
+            position: relative;
+            overflow: hidden;
+            min-height: 60vh;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(135deg, rgba(10, 42, 59, 0.9), rgba(10, 42, 59, 0.7)),
+                        url('https://github.com/oliveeira2610/Neolayerd_Catalogo/blob/main/images/Bunner.gif?raw=true');
+            background-size: cover;
+            background-position: center;
+            background-blend-mode: overlay;
+        }
+
+        .hero .container {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-content {
+            max-width: 600px;
+        }
 
-      :root {
-        --accent: #ff6b35;
-        --primary: #0052cc;
-        --primary-dark: #003d99;
-        --primary-light: #e6f0ff;
-        --secondary: #00e676;
-        --dark: #0a2a3b;
-        --light: #ffffff;
-        --gray-50: #f8fafc;
-        --gray-100: #f1f5f9;
-        --gray-200: #e2e8f0;
-        --gray-300: #cbd5e1;
-        --gray-500: #64748b;
-        --gray-700: #334155;
-        --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.12);
-        --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
-        --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.1);
-        --radius-sm: 0.375rem;
-        --radius-md: 0.5rem;
-        --radius-lg: 0.75rem;
-        --transition: all 0.2s ease;
-      }
-
-      body {
-        font-family:
-          "Inter",
-          -apple-system,
-          BlinkMacSystemFont,
-          "Segoe UI",
-          sans-serif;
-        background-color: var(--gray-50);
-        color: var(--gray-700);
-        line-height: 1.6;
-        -webkit-font-smoothing: antialiased;
-      }
-
-      h1,
-      h2,
-      h3,
-      h4,
-      h5,
-      h6 {
-        font-family: "Poppins", sans-serif;
-        font-weight: 600;
-        line-height: 1.3;
-      }
-
-      .container {
-        max-width: 1280px;
-        margin: 0 auto;
-        padding: 0 1.5rem;
-      }
-
-      /* Header Moderno */
-      header {
-        position: sticky;
-        top: 0;
-        z-index: 50;
-        background: #0A2A3B;
-        backdrop-filter: blur(10px);
-        border-bottom: 1px solid #00E676;
-        box-shadow: var(--shadow-sm);
-      }
-
-      .header-content {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 1rem 0;
-  gap: 2rem;
-}
-
-.header-search-container {
-  flex: 1;
-  max-width: 500px;
-}
-
-      .logo-container {
-        display: flex;
-        align-items: center;
-        gap: 1rem;
-      }
-
-      .logo {
-        width: 48px;
-        height: 48px;
-        object-fit: contain;
-        transition: var(--transition);
-      }
-
-      .logo:hover {
-        transform: scale(1.05);
-      }
-
-      .brand-text h1 {
-        font-size: 1.5rem;
-        color: white;
-        margin-bottom: 0.125rem;
-      }
-
-      .brand-text p {
-        font-size: 0.875rem;
-        color: rgb(187, 187, 187);
-      }
-
-      /* Hero Section Redesign */
-      .hero {
-    padding: 4rem 0;
-    color: white;
-    position: relative;
-    overflow: hidden;
-    min-height: 60vh;
-    display: flex;
-    align-items: center;
-    /* GIF simples de teste */
-    background: linear-gradient(135deg, rgba(10, 42, 59, 0.9), rgba(10, 42, 59, 0.7)),
-                url('https://github.com/oliveeira2610/Neolayerd_Catalogo/blob/main/images/Bunner.gif?raw=true');
-    background-size: cover;
-    background-position: center;
-    background-blend-mode: overlay;
-}
-
-.hero .container {
-    position: relative;
-    z-index: 1;
-}
-
-      .hero::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        right: 0;
-        width: 40%;
-        height: 100%;
-        background: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%230052cc' fill-opacity='0.1' fill-rule='evenodd'/%3E%3C/svg%3E");
-        opacity: 0.3;
-      }
-
-      .hero-content {
-        position: relative;
-        z-index: 1;
-        max-width: 600px;
-      }
-
-      .hero h2 {
-        font-size: 3rem;
-        margin-bottom: 1.5rem;
-        line-height: 1.2;
-        color: white;
-      }
-
-      .hero p {
-        font-size: 1.125rem;
-        color: rgba(255, 255, 255, 0.9);
-        margin-bottom: 2rem;
-        max-width: 500px;
-      }
-
-      .cta-button {
-        display: inline-flex;
-        align-items: center;
-        gap: 0.5rem;
-        background: var(--secondary);
-        color: var(--dark);
-        padding: 1rem 2rem;
-        border-radius: var(--radius-md);
-        text-decoration: none;
-        font-weight: 600;
-        border: none;
-        cursor: pointer;
-        transition: var(--transition);
-        box-shadow: 0 4px 15px rgba(0, 230, 118, 0.3);
-      }
-
-      .cta-button:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 6px 20px rgba(0, 230, 118, 0.4);
-      }
-
-      /* Search Section */
-      /* .search-section {
-        padding: 2rem 0;
-        background: white;
-        border-bottom: 1px solid var(--gray-200);
-        position: sticky;
-        top: 81px;
-        z-index: 40;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-      } */
-
-      .search-container {
-        display: flex;
-        gap: 1rem;
-        align-items: center;
-      }
-
-      .search-wrapper {
-  position: relative;
-  width: 100%;
-}
-
-.search-icon {
-  position: absolute;
-  left: 1rem;
-  top: 50%;
-  transform: translateY(-50%);
-  color: rgba(255, 255, 255, 0.8);
-  pointer-events: none;
-}
-
-.search-clear {
-  position: absolute;
-  right: 1rem;
-  top: 50%;
-  transform: translateY(-50%);
-  background: none;
-  border: none;
-  cursor: pointer;
-  color: rgba(255, 255, 255, 0.6);
-  padding: 0.25rem;
-  border-radius: 50%;
-  transition: var(--transition);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.search-clear:hover {
-  background: rgba(255, 255, 255, 0.1);
-  color: white;
-}
-
-      .search-input {
-  width: 100%;
-  padding: 0.75rem 1rem 0.75rem 3rem;
-  border: 2px solid rgba(255, 255, 255, 0.2);
-  border-radius: var(--radius-md);
-  font-size: 0.95rem;
-  transition: var(--transition);
-  background: rgba(255, 255, 255, 0.1);
-  color: white;
-  backdrop-filter: blur(10px);
-}
-
-.search-input::placeholder {
-  color: rgba(255, 255, 255, 0.7);
-}
-
-      .search-input:focus {
-  outline: none;
-  border-color: var(--secondary);
-  background: rgba(255, 255, 255, 0.15);
-  box-shadow: 0 0 0 3px rgba(0, 230, 118, 0.2);
-}
-
-      .filter-toggle {
-        display: none;
-        align-items: center;
-        gap: 0.5rem;
-        padding: 0.875rem 1.5rem;
-        background: white;
-        border: 2px solid var(--gray-200);
-        border-radius: var(--radius-md);
-        cursor: pointer;
-        font-weight: 500;
-        transition: var(--transition);
-      }
-
-      .filter-toggle:hover {
-        border-color: var(--primary);
-      }
-
-      /* Categories */
-      .categories-section {
-        padding: 1.5rem 0;
-        background: white;
-        border-bottom: 1px solid var(--gray-200);
-      }
-
-      .categories-grid {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 0.75rem;
-      }
-
-      .category-tag {
-        padding: 0.625rem 1.25rem;
-        background: var(--gray-100);
-        border: 2px solid transparent;
-        border-radius: 2rem;
-        color: var(--gray-700);
-        font-size: 0.875rem;
-        font-weight: 500;
-        cursor: pointer;
-        transition: var(--transition);
-        display: flex;
-        align-items: center;
-        gap: 0.5rem;
-      }
-
-      .category-tag:hover {
-        background: var(--primary-light);
-        color: var(--primary);
-        transform: translateY(-1px);
-      }
-
-      .category-tag.active {
-        background: var(--primary);
-        color: white;
-        border-color: var(--primary);
-      }
-
-      .category-tag .count {
-        font-size: 0.75rem;
-        opacity: 0.8;
-      }
-
-      /* Products Grid */
-      .products-section {
-        padding: 3rem 0;
-      }
-
-      .section-header {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        margin-bottom: 2rem;
-      }
-
-      .section-title {
-        font-size: 1.75rem;
-        color: var(--dark);
-      }
-
-      .results-count {
-        color: var(--gray-500);
-        font-size: 0.875rem;
-      }
-
-      .products-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-        gap: 2rem;
-      }
-
-      .product-card {
-        background: white;
-        border-radius: var(--radius-lg);
-        overflow: hidden;
-        box-shadow: var(--shadow-sm);
-        transition: var(--transition);
-        cursor: pointer;
-        border: 1px solid var(--gray-200);
-      }
-
-      .product-card:hover {
-        transform: translateY(-4px);
-        box-shadow: var(--shadow-lg);
-        border-color: var(--primary);
-      }
-
-      .product-image {
-        width: 100%;
-        height: 200px;
-        object-fit: cover;
-        background: linear-gradient(45deg, var(--gray-100), var(--gray-200));
-      }
-
-      .product-content {
-        padding: 1.5rem;
-      }
-
-      .product-header {
-        display: flex;
-        justify-content: space-between;
-        align-items: flex-start;
-        margin-bottom: 1rem;
-      }
-
-      .product-name {
-        font-size: 1.125rem;
-        font-weight: 600;
-        color: var(--dark);
-        margin-bottom: 0.5rem;
-      }
-
-      .product-description {
-        color: var(--gray-500);
-        font-size: 0.875rem;
-        line-height: 1.5;
-        margin-bottom: 1rem;
-        display: -webkit-box;
-        -webkit-line-clamp: 2;
-        -webkit-box-orient: vertical;
-        overflow: hidden;
-      }
-
-      .product-tags {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 0.5rem;
-        margin-bottom: 1rem;
-      }
-
-      .tag {
-        padding: 0.25rem 0.75rem;
-        background: var(--gray-100);
-        border-radius: 1rem;
-        font-size: 0.75rem;
-        color: var(--gray-700);
-      }
-
-      .product-footer {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding-top: 1.25rem;
-        border-top: 1px solid var(--gray-200);
-        gap: 1rem;
-      }
-
-      .product-time {
-        display: flex;
-        align-items: center;
-        gap: 0.5rem;
-        font-size: 0.875rem;
-        color: var(--gray-500);
-      }
-
-      .product-price {
-        font-size: 1.5rem;
-        font-weight: 800;
-        color: var(--accent);
-        display: flex;
-        align-items: baseline;
-        gap: 0.25rem;
-      }
-
-      .product-price::before {
-        content: "R$";
-        font-size: 0.875rem;
-        font-weight: 600;
-        color: var(--gray-600);
-        margin-right: 0.125rem;
-      }
-
-      .price-label {
-        font-size: 0.75rem;
-        color: var(--gray-500);
-        font-weight: 500;
-        margin-bottom: 0.25rem;
-        display: block;
-      }
-
-      .details-btn {
-        padding: 0.75rem 1.5rem;
-        background: var(--primary);
-        color: white;
-        border: none;
-        border-radius: var(--radius-md);
-        font-weight: 600;
-        font-size: 0.875rem;
-        cursor: pointer;
-        transition: var(--transition);
-        display: flex;
-        align-items: center;
-        gap: 0.5rem;
-        white-space: nowrap;
-      }
-
-      .details-btn:hover {
-        background: var(--primary-dark);
-        transform: translateY(-2px);
-        box-shadow: 0 4px 12px rgba(0, 82, 204, 0.3);
-      }
-
-      /* Modal Modernizado */
-
-/* Estilo para o grid de especificações no sidebar */
-.modal-specs-sidebar .specs-grid {
-    display: flex;
-    flex-direction: column;
-    gap: 1.25rem;
-}
-
-.modal-specs-sidebar .spec-item {
-    padding: 1rem;
-    background: white;
-    border-radius: var(--radius-md);
-    border: 1px solid var(--gray-200);
-    transition: var(--transition);
-}
-
-.modal-specs-sidebar .spec-item:hover {
-    border-color: var(--primary);
-    transform: translateX(4px);
-}
-
-.modal-specs-sidebar .spec-label {
-    font-size: 0.875rem;
-    color: var(--gray-600);
-    margin-bottom: 0.5rem;
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    font-weight: 500;
-}
-
-.modal-specs-sidebar .spec-value {
-    font-size: 1rem;
-    font-weight: 600;
-    color: var(--dark);
-}
-
-/* Ajuste para cores disponíveis */
-.modal-colors {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.75rem;
-}
-
-.color-chip {
-    padding: 0.625rem 1.25rem;
-    background: var(--gray-100);
-    border-radius: 1rem;
-    font-size: 0.875rem;
-    color: var(--gray-700);
-    transition: var(--transition);
-    border: 2px solid transparent;
-    font-weight: 500;
-}
-
-.color-chip:hover {
-    background: var(--primary-light);
-    color: var(--primary);
-    border-color: var(--primary);
-    transform: translateY(-2px);
-}
-
-
-
-      .modal {
-        display: none;
-        position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background: rgba(0, 0, 0, 0.5);
-        backdrop-filter: blur(5px);
-        z-index: 100;
-        align-items: center;
-        justify-content: center;
-        padding: 1rem;
-        opacity: 0;
-        transition: opacity 0.3s ease;
-      }
-
-      .modal.active {
-        display: flex;
-        opacity: 1;
-      }
-
-      .modal-content {
-        background: white;
-        border-radius: var(--radius-lg);
-        width: 100%;
-        max-width: 900px;
-        max-height: 90vh;
-        overflow-y: auto;
-        transform: translateY(20px);
-        transition: transform 0.3s ease;
-        box-shadow: var(--shadow-lg);
-      }
-
-      .modal.active .modal-content {
-        transform: translateY(0);
-      }
-
-      .modal-header {
-        padding: 1.5rem 2rem;
-        border-bottom: 1px solid var(--gray-200);
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        position: sticky;
-        top: 0;
-        background: white;
-        z-index: 1;
-      }
-
-      .modal-title {
-        font-size: 1.5rem;
-        color: var(--dark);
-      }
-
-      .close-btn {
-        background: none;
-        border: none;
-        font-size: 1.5rem;
-        cursor: pointer;
-        color: var(--gray-500);
-        padding: 0.5rem;
-        border-radius: var(--radius-sm);
-        transition: var(--transition);
-      }
-
-      .close-btn:hover {
-        background: var(--gray-100);
-        color: var(--gray-700);
-      }
-
-      .modal-body {
-        padding: 2rem;
-      }
-
-      .modal-grid {
-        display: flex;
-        flex-direction: column;
-        gap: 2rem;
-      }
-
-      .modal-image-container{
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  overflow:hidden;
-}
-
-
-.modal-image{
-  max-width:100%;
-  max-height:60vh;
-  padding:12px;
-
-  
-  border-radius:12px;
-  border:2px solid #e2e8f0;
-  background:linear-gradient(45deg,#f1f5f9,#e2e8f0);
-
- 
-  object-fit:contain;
-
-
-  transition:transform .1s ease-out;
-  cursor:zoom-in;
-}
-
-      .modal-content-wrapper {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 2rem;
-        align-items: start;
-      }
-
-      .modal-main-info {
-        display: flex;
-        flex-direction: column;
-        gap: 1.5rem;
-      }
-
-      .modal-specs-sidebar {
-        display: flex;
-        flex-direction: column;
-        gap: 1.5rem;
-      }
-
-      .modal-image:hover {
-        transform: scale(1.05);
-      }
-
-      .modal-info {
-        display: flex;
-        flex-direction: column;
-        gap: 1.5rem;
-      }
-
-      .specs-grid {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 1rem;
-      }
-
-      .spec-item {
-        padding: 1rem;
-        background: var(--gray-50);
-        border-radius: var(--radius-md);
-        border: 1px solid var(--gray-200);
-      }
-
-      .spec-label {
-        font-size: 0.75rem;
-        color: var(--gray-500);
-        margin-bottom: 0.5rem;
-        display: flex;
-        align-items: center;
-        gap: 0.5rem;
-      }
-
-      .spec-value {
-        font-size: 1.125rem;
-        font-weight: 600;
-        color: var(--dark);
-      }
-
-      .modal-colors {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 0.5rem;
-      }
-
-      .color-chip {
-        padding: 0.5rem 1rem;
-        background: var(--gray-100);
-        border-radius: 1rem;
-        font-size: 0.875rem;
-        color: var(--gray-700);
-        transition: var(--transition);
-      }
-
-      .color-chip:hover {
-        background: var(--primary-light);
-        color: var(--primary);
-      }
-
-      .modal-actions {
-        display: flex;
-        gap: 1rem;
-        margin-top: 2rem;
-        padding-top: 2rem;
-        border-top: 1px solid var(--gray-200);
-      }
-
-      .action-button {
-        flex: 1;
-        padding: 1rem;
-        border: none;
-        border-radius: var(--radius-md);
-        font-weight: 600;
-        cursor: pointer;
-        transition: var(--transition);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 0.5rem;
-      }
-
-      .action-button.primary {
-        background: var(--primary);
-        color: white;
-      }
-
-      .action-button.primary:hover {
-        background: var(--primary-dark);
-        transform: translateY(-2px);
-      }
-
-      .action-button.secondary {
-        background: white;
-        color: var(--gray-700);
-        border: 2px solid var(--gray-300);
-      }
-
-      .action-button.secondary:hover {
-        background: var(--gray-50);
-        border-color: var(--gray-500);
-      }
-
-      /* Footer */
-      footer {
-        background: var(--dark);
-        color: white;
-        padding: 4rem 0 2rem;
-        margin-top: 4rem;
-      }
-
-      .footer-content {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-        gap: 3rem;
-        margin-bottom: 3rem;
-      }
-
-      .footer-section h3 {
-        color: white;
-        font-size: 1.125rem;
-        margin-bottom: 1.5rem;
-      }
-
-      .footer-section p {
-        color: rgba(255, 255, 255, 0.7);
-        margin-bottom: 1rem;
-        line-height: 1.6;
-      }
-
-      .footer-links {
-        list-style: none;
-      }
-
-      .footer-links li {
-        margin-bottom: 0.75rem;
-      }
-
-      .footer-links a {
-        color: rgba(255, 255, 255, 0.7);
-        text-decoration: none;
-        transition: color 0.3s;
-        display: flex;
-        align-items: center;
-        gap: 0.5rem;
-      }
-
-      .footer-links a:hover {
-        color: var(--secondary);
-      }
-
-      .footer-bottom {
-        border-top: 1px solid rgba(255, 255, 255, 0.1);
-        padding-top: 2rem;
-        text-align: center;
-        color: rgba(255, 255, 255, 0.5);
-        font-size: 0.875rem;
-      }
-
-      /* Empty State */
-      .empty-state {
-        text-align: center;
-        padding: 4rem 1rem;
-      }
-
-      .empty-icon {
-        font-size: 3rem;
-        margin-bottom: 1rem;
-        opacity: 0.5;
-      }
-
-      .empty-state h3 {
-        color: var(--gray-700);
-        margin-bottom: 0.5rem;
-      }
-
-      .empty-state p {
-        color: var(--gray-500);
-        margin-bottom: 1.5rem;
-      }
-
-      /* Responsividade */
-      @media (max-width: 768px) {
         .hero h2 {
-          font-size: 2rem;
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+            color: white;
         }
 
-        .modal-grid {
-          grid-template-columns: 1fr;
-          gap: 1.5rem;
-        }
-        .modal-image-container {
-          height: 300px;
-        }
-        .product-footer {
-          flex-direction: column;
-          align-items: stretch;
-          text-align: center;
-        }
-        .details-btn {
-          width: 100%;
-          justify-content: center;
+        .hero p {
+            font-size: 1rem;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 2rem;
+            max-width: 500px;
         }
 
-        .filter-toggle {
-          display: flex;
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--secondary);
+            color: var(--dark);
+            padding: 0.875rem 1.75rem;
+            border-radius: var(--radius-md);
+            text-decoration: none;
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+            transition: var(--transition);
+            box-shadow: 0 4px 15px rgba(0, 230, 118, 0.3);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 230, 118, 0.4);
+        }
+
+        /* Categories */
+        .categories-section {
+            padding: 1.5rem 0;
+            background: white;
+            border-bottom: 1px solid var(--gray-200);
         }
 
         .categories-grid {
-          display: none;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
         }
 
-        .categories-grid.active {
-          display: flex;
-          position: absolute;
-          top: 100%;
-          left: 0;
-          right: 0;
-          background: white;
-          padding: 1rem;
-          box-shadow: var(--shadow-md);
-          z-index: 30;
+        .category-tag {
+            padding: 0.625rem 1.25rem;
+            background: var(--gray-100);
+            border: 2px solid transparent;
+            border-radius: 2rem;
+            color: var(--gray-700);
+            font-size: 0.875rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
         }
 
-        .modal-actions {
-          flex-direction: column;
+        .category-tag:hover {
+            background: var(--primary-light);
+            color: var(--primary);
+            transform: translateY(-1px);
+        }
+
+        .category-tag.active {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+
+        .category-tag .count {
+            font-size: 0.75rem;
+            opacity: 0.8;
+        }
+
+        /* Products Grid */
+        .products-section {
+            padding: 2rem 0;
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            color: var(--dark);
+        }
+
+        .results-count {
+            color: var(--gray-500);
+            font-size: 0.875rem;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+            cursor: pointer;
+            border: 1px solid var(--gray-200);
+        }
+
+        .product-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--primary);
+        }
+
+        .product-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            background: linear-gradient(45deg, var(--gray-100), var(--gray-200));
+        }
+
+        .product-content {
+            padding: 1.25rem;
+        }
+
+        .product-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+        }
+
+        .product-name {
+            font-size: 1.125rem;
+            font-weight: 600;
+            color: var(--dark);
+            margin-bottom: 0.5rem;
+        }
+
+        .product-description {
+            color: var(--gray-500);
+            font-size: 0.875rem;
+            line-height: 1.5;
+            margin-bottom: 1rem;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .product-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .tag {
+            padding: 0.25rem 0.75rem;
+            background: var(--gray-100);
+            border-radius: 1rem;
+            font-size: 0.75rem;
+            color: var(--gray-700);
+        }
+
+        .product-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 1rem;
+            border-top: 1px solid var(--gray-200);
+            gap: 1rem;
+        }
+
+        .product-time {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.875rem;
+            color: var(--gray-500);
+        }
+
+        .product-price {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--accent);
+            display: flex;
+            align-items: baseline;
+            gap: 0.25rem;
+        }
+
+        .product-price::before {
+            content: "R$";
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: var(--gray-600);
+            margin-right: 0.125rem;
+        }
+
+        .price-label {
+            font-size: 0.75rem;
+            color: var(--gray-500);
+            font-weight: 500;
+            margin-bottom: 0.25rem;
+            display: block;
+        }
+
+        .details-btn {
+            padding: 0.625rem 1.25rem;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: var(--radius-md);
+            font-weight: 600;
+            font-size: 0.875rem;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            white-space: nowrap;
+        }
+
+        .details-btn:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 82, 204, 0.3);
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(5px);
+            z-index: 100;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .modal.active {
+            display: flex;
+            opacity: 1;
+        }
+
+        .modal-content {
+            background: white;
+            border-radius: var(--radius-lg);
+            width: 100%;
+            max-width: 900px;
+            max-height: 90vh;
+            overflow-y: auto;
+            transform: translateY(20px);
+            transition: transform 0.3s ease;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .modal.active .modal-content {
+            transform: translateY(0);
+        }
+
+        .modal-header {
+            padding: 1.25rem 1.5rem;
+            border-bottom: 1px solid var(--gray-200);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            background: white;
+            z-index: 1;
+        }
+
+        .modal-title {
+            font-size: 1.25rem;
+            color: var(--dark);
+        }
+
+        .close-btn {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--gray-500);
+            padding: 0.5rem;
+            border-radius: var(--radius-sm);
+            transition: var(--transition);
+        }
+
+        .close-btn:hover {
+            background: var(--gray-100);
+            color: var(--gray-700);
+        }
+
+        .modal-body {
+            padding: 1.5rem;
+        }
+
+        .modal-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .modal-image-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        .modal-image {
+            max-width: 100%;
+            max-height: 50vh;
+            padding: 12px;
+            border-radius: 12px;
+            border: 2px solid #e2e8f0;
+            background: linear-gradient(45deg, #f1f5f9, #e2e8f0);
+            object-fit: contain;
+            transition: transform 0.1s ease-out;
+            cursor: zoom-in;
+        }
+
+        .modal-content-wrapper {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+        }
+
+        .modal-main-info {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .modal-specs-sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .modal-image:hover {
+            transform: scale(1.05);
         }
 
         .specs-grid {
-          grid-template-columns: 1fr;
-        }
-        .modal-content-wrapper {
-        grid-template-columns: 1fr;
-        gap: 1.5rem;
-    }
-    
-    .modal-image-container {
-        height: 300px;
-        padding: 1rem;
-    }
-    
-    .modal-image {
-        padding: 1rem;
-    }
-    
-    .modal-specs-sidebar #specsSection {
-        padding: 1.25rem;
-    }
-      }
-
-      @media (max-width: 480px) {
-        .products-grid {
-          grid-template-columns: 1fr;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1rem;
         }
 
-        .hero h2 {
-          font-size: 1.75rem;
+        .spec-item {
+            padding: 1rem;
+            background: var(--gray-50);
+            border-radius: var(--radius-md);
+            border: 1px solid var(--gray-200);
         }
-      }
 
-      /* Animações */
-      @keyframes fadeIn {
-        from {
-          opacity: 0;
-          transform: translateY(10px);
+        .spec-label {
+            font-size: 0.75rem;
+            color: var(--gray-500);
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
         }
-        to {
-          opacity: 1;
-          transform: translateY(0);
+
+        .spec-value {
+            font-size: 1.125rem;
+            font-weight: 600;
+            color: var(--dark);
         }
-      }
 
-      .product-card {
-        animation: fadeIn 0.3s ease-out;
-      }
+        .modal-colors {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
 
-      /* Scrollbar personalizada */
-      ::-webkit-scrollbar {
-        width: 8px;
-      }
+        .color-chip {
+            padding: 0.5rem 1rem;
+            background: var(--gray-100);
+            border-radius: 1rem;
+            font-size: 0.875rem;
+            color: var(--gray-700);
+            transition: var(--transition);
+        }
 
-      ::-webkit-scrollbar-track {
-        background: var(--gray-100);
-      }
+        .color-chip:hover {
+            background: var(--primary-light);
+            color: var(--primary);
+        }
 
-      ::-webkit-scrollbar-thumb {
-        background: var(--gray-300);
-        border-radius: 4px;
-      }
+        .modal-actions {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--gray-200);
+        }
 
-      ::-webkit-scrollbar-thumb:hover {
-        background: var(--gray-400);
-      }
+        .action-button {
+            padding: 1rem;
+            border: none;
+            border-radius: var(--radius-md);
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .action-button.primary {
+            background: var(--primary);
+            color: white;
+        }
+
+        .action-button.primary:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+        }
+
+        .action-button.secondary {
+            background: white;
+            color: var(--gray-700);
+            border: 2px solid var(--gray-300);
+        }
+
+        .action-button.secondary:hover {
+            background: var(--gray-50);
+            border-color: var(--gray-500);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 3rem 0 2rem;
+            margin-top: 3rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            color: white;
+            font-size: 1.125rem;
+            margin-bottom: 1rem;
+        }
+
+        .footer-section p {
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: color 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .footer-links a:hover {
+            color: var(--secondary);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 2rem;
+            text-align: center;
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.875rem;
+        }
+
+        /* Empty State */
+        .empty-state {
+            text-align: center;
+            padding: 3rem 1rem;
+        }
+
+        .empty-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            opacity: 0.5;
+        }
+
+        .empty-state h3 {
+            color: var(--gray-700);
+            margin-bottom: 0.5rem;
+        }
+
+        .empty-state p {
+            color: var(--gray-500);
+            margin-bottom: 1.5rem;
+        }
+
+        /* Responsividade */
+        @media (min-width: 768px) {
+            /* Desktop */
+            .header-top {
+                padding: 1rem 0;
+            }
+
+            .logo {
+                width: 48px;
+                height: 48px;
+            }
+
+            .brand-text h1 {
+                font-size: 1.5rem;
+            }
+
+            .brand-text p {
+                display: block;
+                font-size: 0.875rem;
+            }
+
+            .search-toggle {
+                display: none;
+            }
+
+            .desktop-search {
+                display: block;
+                flex: 1;
+                max-width: 400px;
+            }
+
+            .header-search-container {
+                display: none !important;
+            }
+
+            .hero h2 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1.125rem;
+            }
+
+            .modal-content-wrapper {
+                grid-template-columns: 1fr 1fr;
+                gap: 2rem;
+            }
+
+            .specs-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .modal-actions {
+                flex-direction: row;
+            }
+
+            .footer-content {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+                gap: 3rem;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .desktop-search {
+                max-width: 500px;
+            }
+        }
+
+        @media (max-width: 767px) {
+            .products-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero h2 {
+                font-size: 1.75rem;
+            }
+
+            .hero p {
+                font-size: 0.875rem;
+            }
+
+            .section-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.5rem;
+            }
+
+            .product-footer {
+                flex-direction: column;
+                align-items: stretch;
+                text-align: center;
+                gap: 1rem;
+            }
+
+            .details-btn {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .category-tag {
+                padding: 0.5rem 1rem;
+                font-size: 0.8125rem;
+            }
+        }
+
+        /* Animações */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .product-card {
+            animation: fadeIn 0.3s ease-out;
+        }
+
+        /* Scrollbar personalizada */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--gray-100);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--gray-300);
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--gray-400);
+        }
     </style>
-  </head>
-  <body>
+</head>
+<body>
     <!-- Header -->
     <header>
-  <div class="container">
-    <div class="header-content">
-      <div class="logo-container">
-        <img src="https://github.com/oliveeira2610/Neolayerd_Catalogo/blob/main/images/logo.png?raw=true" alt="NeoLayerd 3D" class="logo" />
-        <div class="brand-text">
-          <h1>Neolayerd 3D</h1>
-          <p>Impressões 3D de alta qualidade</p>
+        <div class="container">
+            <div class="header-top">
+                <div class="logo-container">
+                    <img src="https://github.com/oliveeira2610/Neolayerd_Catalogo/blob/main/images/logo.png?raw=true" alt="NeoLayerd 3D" class="logo" />
+                    <div class="brand-text">
+                        <h1>Neolayerd 3D</h1>
+                        <p>Impressões 3D de alta qualidade</p>
+                    </div>
+                </div>
+                
+                <!-- Botão de busca para mobile -->
+                <button class="search-toggle" onclick="toggleSearch()">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="11" cy="11" r="8" />
+                        <path d="M21 21l-4.35-4.35" />
+                    </svg>
+                </button>
+                
+                <!-- Barra de busca para desktop -->
+                <div class="desktop-search">
+                    <div class="search-wrapper">
+                        <div class="search-icon">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="11" cy="11" r="8" />
+                                <path d="M21 21l-4.35-4.35" />
+                            </svg>
+                        </div>
+                        <input
+                            type="text"
+                            id="searchBox"
+                            class="search-input"
+                            placeholder="Buscar produtos..."
+                            onkeyup="filterProducts()"
+                        />
+                        <button class="search-clear" type="button" onclick="clearSearch()" style="display: none;">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M18 6L6 18M6 6l12 12" />
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Barra de busca expandida para mobile -->
+            <div class="header-search-container" id="headerSearch">
+                <div class="search-wrapper">
+                    <div class="search-icon">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="11" cy="11" r="8" />
+                            <path d="M21 21l-4.35-4.35" />
+                        </svg>
+                    </div>
+                    <input
+                        type="text"
+                        id="mobileSearchBox"
+                        class="search-input"
+                        placeholder="Buscar produtos..."
+                        onkeyup="filterProducts()"
+                    />
+                    <button class="search-clear" type="button" onclick="clearMobileSearch()" style="display: none;">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M18 6L6 18M6 6l12 12" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
         </div>
-      </div>
-      
-      <!-- Barra de pesquisa ao lado da logo -->
-      <div class="header-search-container">
-        <div class="search-wrapper">
-          <div class="search-icon">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <circle cx="11" cy="11" r="8" />
-              <path d="M21 21l-4.35-4.35" />
-            </svg>
-          </div>
-          <input
-            type="text"
-            id="searchBox"
-            class="search-input"
-            placeholder="Buscar produtos..."
-            onkeyup="filterProducts()"
-          />
-          <button class="search-clear" type="button" onclick="clearSearch()" style="display: none;">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M18 6L6 18M6 6l12 12" />
-            </svg>
-          </button>
-        </div>
-      </div>
-    </div>
-  </div>
-</header>
+    </header>
 
     <!-- Hero Section -->
     <section class="hero">
-      <div class="container">
-        <div class="hero-content">
-          <h2>Impressões 3D Profissionais</h2>
-          <p>
-            Explore nossa coleção de produtos personalizados com detalhes de
-            preço, tempo de produção e cores disponíveis. Qualidade garantida em
-            cada camada.
-          </p>
-          <button
-            class="cta-button"
-            onclick="
-              document
-                .getElementById('products')
-                .scrollIntoView({ behavior: 'smooth' })
-            "
-          >
-            <span>Ver Catálogo</span>
-            <svg
-              width="20"
-              height="20"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-            >
-              <path d="M5 12h14M12 5l7 7-7 7" />
-            </svg>
-          </button>
-        </div>
-      </div>
-    </section>
-
-    <!-- Search Section
-    <section class="search-section">
-      <div class="container">
-        <div class="search-container">
-          <div class="search-wrapper">
-            <div class="search-icon">
-              <svg
-                width="20"
-                height="20"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-              >
-                <circle cx="11" cy="11" r="8" />
-                <path d="M21 21l-4.35-4.35" />
-              </svg>
+        <div class="container">
+            <div class="hero-content">
+                <h2>Impressões 3D Profissionais</h2>
+                <p>
+                    Explore nossa coleção de produtos personalizados com detalhes de
+                    preço, tempo de produção e cores disponíveis. Qualidade garantida em
+                    cada camada.
+                </p>
+                <button class="cta-button" onclick="document.getElementById('products').scrollIntoView({ behavior: 'smooth' })">
+                    <span>Ver Catálogo</span>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M5 12h14M12 5l7 7-7 7" />
+                    </svg>
+                </button>
             </div>
-            <input
-              type="text"
-              id="searchBox"
-              class="search-input"
-              placeholder="Buscar produtos por nome ou descrição..."
-              onkeyup="filterProducts()"
-            />
-          </div>
-          <button class="filter-toggle" onclick="toggleCategories()">
-            <svg
-              width="20"
-              height="20"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-            >
-              <path d="M22 3H2l8 9.46V19l4 2v-8.54L22 3z" />
-            </svg>
-            <span>Filtrar</span>
-          </button>
         </div>
-      </div>
-    </section> -->
+    </section>
 
     <!-- Categories -->
     <section class="categories-section">
-      <div class="container">
-        <div class="categories-grid" id="categoryButtons"></div>
-      </div>
+        <div class="container">
+            <div class="categories-grid" id="categoryButtons"></div>
+        </div>
     </section>
 
     <!-- Products -->
     <section id="products" class="products-section">
-      <div class="container">
-        <div class="section-header">
-          <h2 class="section-title">Nossos Produtos</h2>
-          <span class="results-count" id="resultsCount"
-            >Carregando produtos...</span
-          >
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Nossos Produtos</h2>
+                <span class="results-count" id="resultsCount">Carregando produtos...</span>
+            </div>
+            <div class="products-grid" id="productsGrid"></div>
+            <div class="empty-state" id="noProducts" style="display: none">
+                <div class="empty-icon">🔍</div>
+                <h3>Nenhum produto encontrado</h3>
+                <p>Tente usar termos diferentes ou limpar os filtros</p>
+                <button class="action-button secondary" onclick="resetFilters()">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M3 6h18M7 12h10M5 18h14" />
+                    </svg>
+                    Limpar Filtros
+                </button>
+            </div>
         </div>
-        <div class="products-grid" id="productsGrid"></div>
-        <div class="empty-state" id="noProducts" style="display: none">
-          <div class="empty-icon">🔍</div>
-          <h3>Nenhum produto encontrado</h3>
-          <p>Tente usar termos diferentes ou limpar os filtros</p>
-          <button class="action-button secondary" onclick="resetFilters()">
-            <svg
-              width="20"
-              height="20"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-            >
-              <path d="M3 6h18M7 12h10M5 18h14" />
-            </svg>
-            Limpar Filtros
-          </button>
-        </div>
-      </div>
     </section>
 
     <!-- Modal -->
     <div class="modal" id="productModal">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h2 class="modal-title" id="modalTitle"></h2>
-          <button class="close-btn" onclick="closeModal()">&times;</button>
-        </div>
-        <div class="modal-body">
-    <div class="modal-grid">
-        <!-- Imagem ocupa toda a largura -->
-        <div class="modal-image-container">
-            <div style="width: 100%; height: 100%; display: flex; align-items: center; justify-content: center;">
-                <img id="modalImage" class="modal-image" src="" alt="" style="max-width: 100%; max-height: 100%;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title" id="modalTitle"></h2>
+                <button class="close-btn" onclick="closeModal()">&times;</button>
             </div>
-        </div>
-        
-        <!-- Conteúdo em duas colunas abaixo da imagem -->
-        <div class="modal-content-wrapper">
-            <div class="modal-main-info">
-                <div>
-                    <h3 style="font-size: 1.25rem; margin-bottom: 1rem; color: var(--dark);">Descrição</h3>
-                    <p id="modalDescription" style="line-height: 1.6; color: var(--gray-700);"></p>
-                </div>
-                
-                <!-- Informações principais (tempo e preço) -->
-                <div class="specs-grid">
-                    <div class="spec-item">
-                        <div class="spec-label">
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <circle cx="12" cy="12" r="10"/>
-                                <polyline points="12 6 12 12 16 14"/>
-                            </svg>
-                            Tempo de Produção
+            <div class="modal-body">
+                <div class="modal-grid">
+                    <div class="modal-image-container">
+                        <div style="width: 100%; height: 100%; display: flex; align-items: center; justify-content: center;">
+                            <img id="modalImage" class="modal-image" src="" alt="" style="max-width: 100%; max-height: 100%;">
                         </div>
-                        <div class="spec-value" id="modalTime"></div>
                     </div>
-                    <div class="spec-item">
-                        <div class="spec-label">
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M12 1v22M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
-                            </svg>
-                            Preço
-                        </div>
-                        <div class="spec-value" id="modalPrice"></div>
-                    </div>
-                </div>
+                    
+                    <div class="modal-content-wrapper">
+                        <div class="modal-main-info">
+                            <div>
+                                <h3 style="font-size: 1.125rem; margin-bottom: 0.75rem; color: var(--dark);">Descrição</h3>
+                                <p id="modalDescription" style="line-height: 1.6; color: var(--gray-700); font-size: 0.9375rem;"></p>
+                            </div>
+                            
+                            <div class="specs-grid">
+                                <div class="spec-item">
+                                    <div class="spec-label">
+                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <circle cx="12" cy="12" r="10"/>
+                                            <polyline points="12 6 12 12 16 14"/>
+                                        </svg>
+                                        Tempo de Produção
+                                    </div>
+                                    <div class="spec-value" id="modalTime"></div>
+                                </div>
+                                <div class="spec-item">
+                                    <div class="spec-label">
+                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <path d="M12 1v22M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+                                        </svg>
+                                        Preço
+                                    </div>
+                                    <div class="spec-value" id="modalPrice"></div>
+                                </div>
+                            </div>
 
-                <!-- Cores -->
-                <div id="colorsSection">
-                    <h3 style="font-size: 1.25rem; margin-bottom: 1rem; color: var(--dark);">Cores Disponíveis</h3>
-                    <div class="modal-colors" id="modalColors"></div>
-                </div>
-            </div>
-            
-            <!-- Sidebar com especificações técnicas -->
-            <div class="modal-specs-sidebar">
-                <div id="specsSection" style="background: var(--gray-50); padding: 1.5rem; border-radius: var(--radius-md); border: 1px solid var(--gray-200);">
-                    <h3 style="font-size: 1.25rem; margin-bottom: 1.5rem; color: var(--dark); display: flex; align-items: center; gap: 0.5rem;">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
-                        </svg>
-                        Especificações Técnicas
-                    </h3>
-                    <div class="specs-grid" id="specsGrid" style="display: flex; flex-direction: column; gap: 1rem;"></div>
-                </div>
-                
-                <!-- Botões de ação -->
-                <div class="modal-actions" style="margin-top: auto;">
-                    <button class="action-button primary" onclick="requestQuote()">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M20 14.66V20a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h5.34"/>
-                            <polygon points="18 2 22 6 12 16 8 16 8 12 18 2"/>
-                        </svg>
-                        Solicitar Orçamento
-                    </button>
-                    <button class="action-button secondary" onclick="closeModal()">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M18 6L6 18M6 6l12 12"/>
-                        </svg>
-                        Fechar
-                    </button>
+                            <div id="colorsSection">
+                                <h3 style="font-size: 1.125rem; margin-bottom: 0.75rem; color: var(--dark);">Cores Disponíveis</h3>
+                                <div class="modal-colors" id="modalColors"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="modal-specs-sidebar">
+                            <div id="specsSection" style="background: var(--gray-50); padding: 1.25rem; border-radius: var(--radius-md); border: 1px solid var(--gray-200);">
+                                <h3 style="font-size: 1.125rem; margin-bottom: 1rem; color: var(--dark); display: flex; align-items: center; gap: 0.5rem;">
+                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                                    </svg>
+                                    Especificações Técnicas
+                                </h3>
+                                <div class="specs-grid" id="specsGrid" style="display: flex; flex-direction: column; gap: 0.75rem;"></div>
+                            </div>
+                            
+                            <div class="modal-actions">
+                                <button class="action-button primary" onclick="requestQuote()">
+                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M20 14.66V20a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h5.34"/>
+                                        <polygon points="18 2 22 6 12 16 8 16 8 12 18 2"/>
+                                    </svg>
+                                    Solicitar Orçamento
+                                </button>
+                                <button class="action-button secondary" onclick="closeModal()">
+                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M18 6L6 18M6 6l12 12"/>
+                                    </svg>
+                                    Fechar
+                                </button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-</div>
-      </div>
     </div>
 
     <!-- Footer -->
     <footer>
-      <div class="container">
-        <div class="footer-content">
-          <div class="footer-section">
-            <h3>Neolayerd 3D</h3>
-            <p>
-              Especialistas em impressões 3D de alta qualidade com
-              personalização completa e acabamento profissional.
-            </p>
-          </div>
-          <div class="footer-section">
-            <h3>Catálogo</h3>
-            <ul class="footer-links" id="footerCategories"></ul>
-          </div>
-          <div class="footer-section">
-            <h3>Contato</h3>
-            <ul class="footer-links">
-              <li>
-                <svg
-                  width="16"
-                  height="16"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                >
-                  <path
-                    d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"
-                  />
-                  <polyline points="22,6 12,13 2,6" />
-                </svg>
-                <a href="mailto:contato@neolayerd3d.com"
-                  >contato@neolayerd3d.com</a
-                >
-              </li>
-              <li>
-                <svg
-                  width="16"
-                  height="16"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                >
-                  <path
-                    d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"
-                  />
-                </svg>
-                <a href="tel:+5511999999999">(11) 99999-9999</a>
-              </li>
-            </ul>
-          </div>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Neolayerd 3D</h3>
+                    <p>
+                        Especialistas em impressões 3D de alta qualidade com
+                        personalização completa e acabamento profissional.
+                    </p>
+                </div>
+                <div class="footer-section">
+                    <h3>Catálogo</h3>
+                    <ul class="footer-links" id="footerCategories"></ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Contato</h3>
+                    <ul class="footer-links">
+                        <li>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                                <polyline points="22,6 12,13 2,6"/>
+                            </svg>
+                            <a href="mailto:contato@neolayerd3d.com">contato@neolayerd3d.com</a>
+                        </li>
+                        <li>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                            </svg>
+                            <a href="tel:+5511999999999">(11) 99999-9999</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 NeoLayerd 3D. Todos os direitos reservados.</p>
+            </div>
         </div>
-        <div class="footer-bottom">
-          <p>&copy; 2024 NeoLayerd 3D. Todos os direitos reservados.</p>
-        </div>
-      </div>
     </footer>
 
     <script>
-      const PRODUCTS = [
-        {
-          id: 1,
-          name: "Motor Honda 160cc",
-          description:
-            "Impressão 3D inspirada no motor Honda 160cc, com design detalhado e visual realista. Ideal para apaixonados por motos, oficinas, decoração temática ou como peça colecionável.",
-          price: 65.9,
-          productionTime: "2-3 dias",
-          image:
-            "https://github.com/oliveeira2610/Neolayerd_Catalogo/blob/main/images/motorhonda160.jpg?raw=true",
-          colors: ["Cinza", "Preto", "Branco"],
-          categories: ["Decoração", "Iluminação"],
-          specifications: {
-            material: "ABS premium",
-            dimensions: "12 x 9 x 9,5 cm",
-            weight: "150g",
-          },
-        },
-        {
-          id: 2,
-          name: "Decoração de Parede BMW",
-          description:
-            "Perfeita para quartos, escritórios ou salas, unindo paixão automotiva e design moderno na decoração.",
-          price: 26.9,
-          productionTime: "1-2 dias",
-          image:
-            "https://github.com/oliveeira2610/Neolayerd_Catalogo/blob/main/images/decoracaoparedebmw.jpg?raw=true",
-          colors: ["Azul", "Preto", "Cinza", "Branco", "Vermelho", "Verde"],
-          categories: ["Decoração"],
-          specifications: {
-            material: "ABS premium",
-            dimensions: "20 x 17 cm",
-            weight: "30g",
-          },
-        },
-        {
-          id: 3,
-          name: "Decoração de Parede Porsche 911 GT3 RS",
-          description:
-            "Ideal para fãs de carros esportivos e colecionadores. Adiciona estilo e personalidade a quartos, salas ou escritórios.",
-          price: 26.9,
-          productionTime: "1-2 dias",
-          image:
-            "https://github.com/oliveeira2610/Neolayerd_Catalogo/blob/main/images/DecoracaodeParedPorsche911GT3RS.png?raw=true",
-          colors: ["Azul", "Preto", "Cinza", "Branco", "Vermelho", "Verde"],
-          categories: ["Decoração"],
-          specifications: {
-            material: "ABS premium",
-            dimensions: "20 x 17 cm",
-            weight: "30g",
-          },
-        },
-        {
-          id: 4,
-          name: "Organizador de Desk",
-          description:
-            "Organizador multifuncional para sua mesa, com compartimentos para canetas, clipes e pequenos itens.",
-          price: 67.9,
-          productionTime: "4-6 dias",
-          image:
-            "https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=500&h=500&fit=crop",
-          colors: ["Branco", "Cinza", "Preto"],
-          categories: ["Organização"],
-          specifications: {
-            material: "ABS premium",
-            dimensions: "20 x 15 x 12 cm",
-            weight: "250g",
-          },
-        },
-        {
-          id: 5,
-          name: "Luminária LED Moderna",
-          description:
-            "Luminária contemporânea com design geométrico, perfeita para criar atmosfera aconchegante.",
-          price: 99.9,
-          productionTime: "5-7 dias",
-          image:
-            "https://images.unsplash.com/photo-1578500494198-246f612d03b3?w=500&h=500&fit=crop",
-          colors: ["Branco", "Cinza", "Preto"],
-          categories: ["Iluminação", "Decoração"],
-          specifications: {
-            material: "ABS premium",
-            dimensions: "15 x 15 x 20 cm",
-            weight: "180g",
-          },
-        },
-      ];
+        const PRODUCTS = [
+            {
+                id: 1,
+                name: "Motor Honda 160cc",
+                description: "Impressão 3D inspirada no motor Honda 160cc, com design detalhado e visual realista. Ideal para apaixonados por motos, oficinas, decoração temática ou como peça colecionável.",
+                price: 65.9,
+                productionTime: "2-3 dias",
+                image: "https://github.com/oliveeira2610/Neolayerd_Catalogo/blob/main/images/motorhonda160.jpg?raw=true",
+                colors: ["Cinza", "Preto", "Branco"],
+                categories: ["Decoração", "Iluminação"],
+                specifications: {
+                    material: "ABS premium",
+                    dimensions: "12 x 9 x 9,5 cm",
+                    weight: "150g",
+                },
+            },
+            {
+                id: 2,
+                name: "Decoração de Parede BMW",
+                description: "Perfeita para quartos, escritórios ou salas, unindo paixão automotiva e design moderno na decoração.",
+                price: 26.9,
+                productionTime: "1-2 dias",
+                image: "https://github.com/oliveeira2610/Neolayerd_Catalogo/blob/main/images/decoracaoparedebmw.jpg?raw=true",
+                colors: ["Azul", "Preto", "Cinza", "Branco", "Vermelho", "Verde"],
+                categories: ["Decoração"],
+                specifications: {
+                    material: "ABS premium",
+                    dimensions: "20 x 17 cm",
+                    weight: "30g",
+                },
+            },
+            {
+                id: 3,
+                name: "Decoração de Parede Porsche 911 GT3 RS",
+                description: "Ideal para fãs de carros esportivos e colecionadores. Adiciona estilo e personalidade a quartos, salas ou escritórios.",
+                price: 26.9,
+                productionTime: "1-2 dias",
+                image: "https://github.com/oliveeira2610/Neolayerd_Catalogo/blob/main/images/DecoracaodeParedPorsche911GT3RS.png?raw=true",
+                colors: ["Azul", "Preto", "Cinza", "Branco", "Vermelho", "Verde"],
+                categories: ["Decoração"],
+                specifications: {
+                    material: "ABS premium",
+                    dimensions: "20 x 17 cm",
+                    weight: "30g",
+                },
+            },
+            {
+                id: 4,
+                name: "Organizador de Desk",
+                description: "Organizador multifuncional para sua mesa, com compartimentos para canetas, clipes e pequenos itens.",
+                price: 67.9,
+                productionTime: "4-6 dias",
+                image: "https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=500&h=500&fit=crop",
+                colors: ["Branco", "Cinza", "Preto"],
+                categories: ["Organização"],
+                specifications: {
+                    material: "ABS premium",
+                    dimensions: "20 x 15 x 12 cm",
+                    weight: "250g",
+                },
+            },
+            {
+                id: 5,
+                name: "Luminária LED Moderna",
+                description: "Luminária contemporânea com design geométrico, perfeita para criar atmosfera aconchegante.",
+                price: 99.9,
+                productionTime: "5-7 dias",
+                image: "https://images.unsplash.com/photo-1578500494198-246f612d03b3?w=500&h=500&fit=crop",
+                colors: ["Branco", "Cinza", "Preto"],
+                categories: ["Iluminação", "Decoração"],
+                specifications: {
+                    material: "ABS premium",
+                    dimensions: "15 x 15 x 20 cm",
+                    weight: "180g",
+                },
+            },
+        ];
 
-      let selectedCategory = null;
-      let currentModalProduct = null;
+        let selectedCategory = null;
+        let currentModalProduct = null;
+        let isSearchOpen = false;
 
-      function init() {
-        renderProducts();
-        renderCategories();
-        updateResultsCount();
-      }
-
-      function renderProducts() {
-        const grid = document.getElementById("productsGrid");
-        const noProducts = document.getElementById("noProducts");
-        const searchQuery = document
-          .getElementById("searchBox")
-          .value.toLowerCase()
-          .trim();
-
-        const filtered = PRODUCTS.filter((product) => {
-          const matchesCategory =
-            !selectedCategory || product.categories.includes(selectedCategory);
-          const matchesSearch =
-            !searchQuery ||
-            product.name.toLowerCase().includes(searchQuery) ||
-            product.description.toLowerCase().includes(searchQuery) ||
-            product.categories.some((cat) =>
-              cat.toLowerCase().includes(searchQuery),
-            );
-          return matchesCategory && matchesSearch;
-        });
-
-        if (filtered.length === 0) {
-          grid.innerHTML = "";
-          noProducts.style.display = "block";
-          updateResultsCount(0);
-          return;
+        function init() {
+            renderProducts();
+            renderCategories();
+            updateResultsCount();
+            
+            // Sincronizar as duas caixas de busca
+            const desktopSearch = document.getElementById('searchBox');
+            const mobileSearch = document.getElementById('mobileSearchBox');
+            
+            desktopSearch.addEventListener('input', function() {
+                mobileSearch.value = this.value;
+                filterProducts();
+            });
+            
+            mobileSearch.addEventListener('input', function() {
+                desktopSearch.value = this.value;
+                filterProducts();
+            });
         }
 
-        noProducts.style.display = "none";
-        updateResultsCount(filtered.length);
+        function renderProducts() {
+            const grid = document.getElementById("productsGrid");
+            const noProducts = document.getElementById("noProducts");
+            const searchQuery = document.getElementById("searchBox").value.toLowerCase().trim();
 
-        grid.innerHTML = filtered
-          .map(
-            (product) => `
+            const filtered = PRODUCTS.filter((product) => {
+                const matchesCategory = !selectedCategory || product.categories.includes(selectedCategory);
+                const matchesSearch = !searchQuery ||
+                    product.name.toLowerCase().includes(searchQuery) ||
+                    product.description.toLowerCase().includes(searchQuery) ||
+                    product.categories.some((cat) => cat.toLowerCase().includes(searchQuery));
+                return matchesCategory && matchesSearch;
+            });
+
+            if (filtered.length === 0) {
+                grid.innerHTML = "";
+                noProducts.style.display = "block";
+                updateResultsCount(0);
+                return;
+            }
+
+            noProducts.style.display = "none";
+            updateResultsCount(filtered.length);
+
+            grid.innerHTML = filtered.map((product) => `
                 <div class="product-card" onclick="openModal(${product.id})">
                     <img src="${product.image}" alt="${product.name}" class="product-image" loading="lazy">
                     <div class="product-content">
@@ -1426,32 +1292,18 @@
                         </div>
                         <p class="product-description">${product.description}</p>
                         
-                        ${
-                          product.colors.length > 0
-                            ? `
+                        ${product.colors.length > 0 ? `
                             <div class="product-tags">
-                                ${product.colors
-                                  .slice(0, 3)
-                                  .map(
-                                    (color) =>
-                                      `<span class="tag">${color}</span>`,
-                                  )
-                                  .join("")}
+                                ${product.colors.slice(0, 3).map((color) => `<span class="tag">${color}</span>`).join("")}
                                 ${product.colors.length > 3 ? `<span class="tag">+${product.colors.length - 3}</span>` : ""}
                             </div>
-                        `
-                            : ""
-                        }
+                        ` : ""}
                         
-                        ${
-                          product.categories.length > 0
-                            ? `
+                        ${product.categories.length > 0 ? `
                             <div class="product-tags">
                                 ${product.categories.map((cat) => `<span class="tag">${cat}</span>`).join("")}
                             </div>
-                        `
-                            : ""
-                        }
+                        ` : ""}
                         
                         <div class="product-footer">
                             <div>
@@ -1459,224 +1311,237 @@
                                 <div class="product-price">${product.price.toFixed(2).replace(".", ",")}</div>
                             </div>
                             <button class="details-btn" onclick="event.stopPropagation(); openModal(${product.id})">
-                                
                                 Ver Detalhes
                             </button>
                         </div>
                     </div>
                 </div>
-            `,
-          )
-          .join("");
-      }
+            `).join("");
+        }
 
-      function renderCategories() {
-        const allCategories = [];
-        PRODUCTS.forEach((p) => {
-          p.categories.forEach((cat) => {
-            if (!allCategories.includes(cat)) {
-              allCategories.push(cat);
-            }
-          });
-        });
+        function renderCategories() {
+            const allCategories = [];
+            PRODUCTS.forEach((p) => {
+                p.categories.forEach((cat) => {
+                    if (!allCategories.includes(cat)) {
+                        allCategories.push(cat);
+                    }
+                });
+            });
 
-        const container = document.getElementById("categoryButtons");
-        const footer = document.getElementById("footerCategories");
+            const container = document.getElementById("categoryButtons");
+            const footer = document.getElementById("footerCategories");
 
-        container.innerHTML = `
+            container.innerHTML = `
                 <button class="category-tag ${!selectedCategory ? "active" : ""}" onclick="selectCategory(null)">
                     <span>Todos</span>
                     <span class="count">(${PRODUCTS.length})</span>
                 </button>
-                ${allCategories
-                  .map((cat) => {
-                    const count = PRODUCTS.filter((p) =>
-                      p.categories.includes(cat),
-                    ).length;
+                ${allCategories.map((cat) => {
+                    const count = PRODUCTS.filter((p) => p.categories.includes(cat)).length;
                     return `<button class="category-tag ${selectedCategory === cat ? "active" : ""}" onclick="selectCategory('${cat}')">
                         <span>${cat}</span>
                         <span class="count">(${count})</span>
                     </button>`;
-                  })
-                  .join("")}
+                }).join("")}
             `;
 
-        footer.innerHTML = `
+            footer.innerHTML = `
                 <li><a href="#" onclick="selectCategory(null); return false;">Todos os Produtos</a></li>
-                ${allCategories
-                  .map(
-                    (cat) => `
+                ${allCategories.map((cat) => `
                     <li><a href="#" onclick="selectCategory('${cat}'); return false;">${cat}</a></li>
-                `,
-                  )
-                  .join("")}
+                `).join("")}
             `;
-      }
+        }
 
-      function selectCategory(category) {
-        selectedCategory = category;
+        function selectCategory(category) {
+            selectedCategory = category;
+            
+            document.querySelectorAll(".category-tag").forEach((btn) => {
+                btn.classList.remove("active");
+            });
+            
+            const allBtn = document.querySelector(".category-tag:first-child");
+            const targetBtn = Array.from(document.querySelectorAll(".category-tag")).find(btn => 
+                btn.textContent.includes(category || "Todos")
+            );
+            
+            if (targetBtn) {
+                targetBtn.classList.add("active");
+            } else if (!category && allBtn) {
+                allBtn.classList.add("active");
+            }
+            
+            renderProducts();
+        }
 
-        // Atualizar estado dos botões
-        document.querySelectorAll(".category-tag").forEach((btn) => {
-          btn.classList.remove("active");
+        function filterProducts() {
+            const searchValue = document.getElementById('searchBox').value;
+            const clearBtns = document.querySelectorAll('.search-clear');
+            
+            // Mostrar/esconder botão de limpar
+            if (searchValue.trim() !== '') {
+                clearBtns.forEach(btn => btn.style.display = 'flex');
+            } else {
+                clearBtns.forEach(btn => btn.style.display = 'none');
+            }
+            
+            renderProducts();
+        }
+
+        function toggleSearch() {
+            const searchContainer = document.getElementById('headerSearch');
+            isSearchOpen = !isSearchOpen;
+            
+            if (isSearchOpen) {
+                searchContainer.classList.add('active');
+                document.getElementById('mobileSearchBox').focus();
+            } else {
+                searchContainer.classList.remove('active');
+            }
+        }
+
+        function clearSearch() {
+            document.getElementById('searchBox').value = '';
+            document.getElementById('mobileSearchBox').value = '';
+            filterProducts();
+        }
+
+        function clearMobileSearch() {
+            document.getElementById('mobileSearchBox').value = '';
+            document.getElementById('searchBox').value = '';
+            filterProducts();
+        }
+
+        function resetFilters() {
+            selectedCategory = null;
+            document.getElementById("searchBox").value = '';
+            document.getElementById("mobileSearchBox").value = '';
+            renderCategories();
+            renderProducts();
+            
+            // Fechar busca mobile se estiver aberta
+            if (isSearchOpen) {
+                toggleSearch();
+            }
+        }
+
+        function updateResultsCount(count) {
+            const element = document.getElementById("resultsCount");
+            if (count === 0) {
+                element.textContent = "Nenhum produto encontrado";
+            } else if (count) {
+                element.textContent = `${count} produto${count !== 1 ? "s" : ""} encontrado${count !== 1 ? "s" : ""}`;
+            } else {
+                element.textContent = "Carregando produtos...";
+            }
+        }
+
+        function openModal(productId) {
+            const product = PRODUCTS.find((p) => p.id === productId);
+            if (!product) return;
+
+            currentModalProduct = product;
+
+            document.getElementById("modalTitle").textContent = product.name;
+            document.getElementById("modalImage").src = product.image;
+            document.getElementById("modalDescription").textContent = product.description;
+            document.getElementById("modalTime").textContent = product.productionTime;
+            document.getElementById("modalPrice").textContent = `R$ ${product.price.toFixed(2).replace(".", ",")}`;
+
+            // Cores
+            const colorsSection = document.getElementById("colorsSection");
+            if (product.colors.length > 0) {
+                colorsSection.style.display = "block";
+                document.getElementById("modalColors").innerHTML = product.colors
+                    .map((color) => `<div class="color-chip">${color}</div>`)
+                    .join("");
+            } else {
+                colorsSection.style.display = "none";
+            }
+
+            // Especificações
+            const specsSection = document.getElementById("specsSection");
+            if (product.specifications) {
+                specsSection.style.display = 'block';
+                const specsGrid = document.getElementById('specsGrid');
+                specsGrid.innerHTML = Object.entries(product.specifications)
+                    .map(([key, value]) => {
+                        const labels = {
+                            material: 'Material',
+                            dimensions: 'Dimensões',
+                            weight: 'Peso'
+                        };
+                        return `
+                            <div class="spec-item">
+                                <div class="spec-label">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <circle cx="12" cy="12" r="10" stroke-width="1.5"/>
+                                        <path d="M12 16v-4M12 8h.01" stroke-width="2"/>
+                                    </svg>
+                                    ${labels[key] || key}
+                                </div>
+                                <div class="spec-value">${value}</div>
+                            </div>
+                        `;
+                    })
+                    .join('');
+            } else {
+                specsSection.style.display = 'none';
+            }
+
+            // Abrir modal
+            const modal = document.getElementById("productModal");
+            modal.classList.add("active");
+            document.body.style.overflow = "hidden";
+        }
+
+        function closeModal() {
+            const modal = document.getElementById("productModal");
+            modal.classList.remove("active");
+            document.body.style.overflow = "auto";
+            currentModalProduct = null;
+        }
+
+        function requestQuote() {
+            if (currentModalProduct) {
+                const message = `Olá! Gostaria de solicitar um orçamento para: ${currentModalProduct.name}`;
+                alert(`Pedido enviado!\n\n${message}\n\nEm breve entraremos em contato.`);
+                closeModal();
+            }
+        }
+
+        // Fechar modal ao clicar fora ou pressionar ESC
+        document.getElementById("productModal").addEventListener("click", function (e) {
+            if (e.target === this) {
+                closeModal();
+            }
         });
 
-        const allBtn = document.querySelector(".category-tag:first-child");
-        const targetBtn = Array.from(
-          document.querySelectorAll(".category-tag"),
-        ).find((btn) => btn.textContent.includes(category || "Todos"));
-
-        if (targetBtn) {
-          targetBtn.classList.add("active");
-        } else if (!category && allBtn) {
-          allBtn.classList.add("active");
-        }
-
-        renderProducts();
-
-        // Fechar menu mobile se aberto
-        const categoriesGrid = document.querySelector(".categories-grid");
-        categoriesGrid.classList.remove("active");
-      }
-
-      function filterProducts() {
-        renderProducts();
-      }
-
-      function resetFilters() {
-        selectedCategory = null;
-        document.getElementById("searchBox").value = "";
-        renderCategories();
-        renderProducts();
-      }
-
-      function updateResultsCount(count) {
-        const element = document.getElementById("resultsCount");
-        if (count === 0) {
-          element.textContent = "Nenhum produto encontrado";
-        } else if (count) {
-          element.textContent = `${count} produto${count !== 1 ? "s" : ""} encontrado${count !== 1 ? "s" : ""}`;
-        } else {
-          element.textContent = "Carregando produtos...";
-        }
-      }
-
-      function openModal(productId) {
-        const product = PRODUCTS.find((p) => p.id === productId);
-        if (!product) return;
-
-        currentModalProduct = product;
-
-        document.getElementById("modalTitle").textContent = product.name;
-        document.getElementById("modalImage").src = product.image;
-        document.getElementById("modalDescription").textContent =
-          product.description;
-        document.getElementById("modalTime").textContent =
-          product.productionTime;
-        document.getElementById("modalPrice").textContent =
-          `R$ ${product.price.toFixed(2).replace(".", ",")}`;
-
-        // Cores
-        const colorsSection = document.getElementById("colorsSection");
-        if (product.colors.length > 0) {
-          colorsSection.style.display = "block";
-          document.getElementById("modalColors").innerHTML = product.colors
-            .map((color) => `<div class="color-chip">${color}</div>`)
-            .join("");
-        } else {
-          colorsSection.style.display = "none";
-        }
-
-        // Especificações
-        const specsSection = document.getElementById("specsSection");
-        // Dentro da função openModal, na parte das especificações:
-if (product.specifications) {
-    specsSection.style.display = 'block';
-    const specsGrid = document.getElementById('specsGrid');
-    specsGrid.innerHTML = Object.entries(product.specifications)
-        .map(([key, value]) => {
-            const labels = {
-                material: 'Material',
-                dimensions: 'Dimensões',
-                weight: 'Peso'
-            };
-            return `
-                <div class="spec-item">
-                    <div class="spec-label">
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <circle cx="12" cy="12" r="10" stroke-width="1.5"/>
-                            <path d="M12 16v-4M12 8h.01" stroke-width="2"/>
-                        </svg>
-                        ${labels[key] || key}
-                    </div>
-                    <div class="spec-value">${value}</div>
-                </div>
-            `;
-        })
-        .join('');
-} else {
-    specsSection.style.display = 'none';
-}
-
-        // Abrir modal
-        const modal = document.getElementById("productModal");
-        modal.classList.add("active");
-        document.body.style.overflow = "hidden";
-      }
-
-      function closeModal() {
-        const modal = document.getElementById("productModal");
-        modal.classList.remove("active");
-        document.body.style.overflow = "auto";
-        currentModalProduct = null;
-      }
-
-      function requestQuote() {
-        if (currentModalProduct) {
-          const message = `Olá! Gostaria de solicitar um orçamento para: ${currentModalProduct.name}`;
-          alert(
-            `Pedido enviado!\n\n${message}\n\nEm breve entraremos em contato.`,
-          );
-          closeModal();
-        }
-      }
-
-      function toggleCategories() {
-        const categoriesGrid = document.querySelector(".categories-grid");
-        categoriesGrid.classList.toggle("active");
-      }
-
-      // Fechar modal ao clicar fora ou pressionar ESC
-      document
-        .getElementById("productModal")
-        .addEventListener("click", function (e) {
-          if (e.target === this) {
-            closeModal();
-          }
+        document.addEventListener("keydown", function (e) {
+            if (e.key === "Escape") {
+                closeModal();
+                if (isSearchOpen) {
+                    toggleSearch();
+                }
+            }
         });
 
-      document.addEventListener("keydown", function (e) {
-        if (e.key === "Escape") {
-          closeModal();
-        }
-      });
+        // Fechar busca mobile ao clicar fora
+        document.addEventListener('click', function(e) {
+            const searchContainer = document.getElementById('headerSearch');
+            const searchToggle = document.querySelector('.search-toggle');
+            
+            if (isSearchOpen && 
+                !searchContainer.contains(e.target) && 
+                !searchToggle.contains(e.target) &&
+                e.target !== searchToggle) {
+                toggleSearch();
+            }
+        });
 
-      // Fechar categorias ao clicar fora (mobile)
-      document.addEventListener("click", function (e) {
-        const categoriesGrid = document.querySelector(".categories-grid");
-        const filterToggle = document.querySelector(".filter-toggle");
-
-        if (
-          categoriesGrid.classList.contains("active") &&
-          !categoriesGrid.contains(e.target) &&
-          !filterToggle.contains(e.target)
-        ) {
-          categoriesGrid.classList.remove("active");
-        }
-      });
-
-      // Inicializar
-      init();
+        // Inicializar
+        init();
     </script>
-  </body>
+</body>
 </html>
