@@ -123,45 +123,17 @@
     min-height: 80vh;
     display: flex;
     align-items: center;
-}
-
-/* Background com GIF */
-.hero::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image: url('https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExeG53dzZyZmU1bmlldjV3aG9nNXl5emNhMnhhYW13cGpjZHh3NHExZSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/f3iwJFOVOwY7J6aUrw/giphy.gif');
-    /* Ou use um GIF local: url('/caminho/para/seu/gif.gif') */
+    /* GIF simples de teste */
+    background: linear-gradient(135deg, rgba(10, 42, 59, 0.9), rgba(10, 42, 59, 0.7)),
+                url('https://github.com/oliveeira2610/Neolayerd_Catalogo/blob/main/images/Bunner.gif?raw=true');
     background-size: cover;
     background-position: center;
-    background-repeat: no-repeat;
-    z-index: 1;
+    background-blend-mode: overlay;
 }
 
-/* Overlay escuro para melhor contraste do texto */
-.hero::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(
-        to right,
-        rgba(10, 42, 59, 0.85) 0%,
-        rgba(10, 42, 59, 0.7) 50%,
-        rgba(10, 42, 59, 0.4) 100%
-    );
-    z-index: 2;
-}
-
-/* Ajuste do conteúdo para ficar acima do overlay */
 .hero .container {
     position: relative;
-    z-index: 3;
+    z-index: 1;
 }
 
       .hero::before {
@@ -969,7 +941,7 @@
       <div class="container">
         <div class="header-content">
           <div class="logo-container">
-            <img src="/images/logo.png" alt="NeoLayerd 3D" class="logo" />
+            <img src="https://github.com/oliveeira2610/Neolayerd_Catalogo/blob/main/images/logo.png?raw=true" alt="NeoLayerd 3D" class="logo" />
             <div class="brand-text">
               <h1>Neolayerd 3D</h1>
               <p>Impressões 3D de alta qualidade</p>
