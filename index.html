@@ -73,18 +73,24 @@
         position: sticky;
         top: 0;
         z-index: 50;
-        background: rgba(255, 255, 255, 0.95);
+        background: #0A2A3B;
         backdrop-filter: blur(10px);
-        border-bottom: 1px solid var(--gray-200);
+        border-bottom: 1px solid #00E676;
         box-shadow: var(--shadow-sm);
       }
 
       .header-content {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        padding: 1rem 0;
-      }
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 0;
+  gap: 2rem;
+}
+
+.header-search-container {
+  flex: 1;
+  max-width: 500px;
+}
 
       .logo-container {
         display: flex;
@@ -105,13 +111,13 @@
 
       .brand-text h1 {
         font-size: 1.5rem;
-        color: var(--dark);
+        color: white;
         margin-bottom: 0.125rem;
       }
 
       .brand-text p {
         font-size: 0.875rem;
-        color: var(--gray-500);
+        color: rgb(187, 187, 187);
       }
 
       /* Hero Section Redesign */
@@ -120,7 +126,7 @@
     color: white;
     position: relative;
     overflow: hidden;
-    min-height: 80vh;
+    min-height: 60vh;
     display: flex;
     align-items: center;
     /* GIF simples de teste */
@@ -189,7 +195,7 @@
       }
 
       /* Search Section */
-      .search-section {
+      /* .search-section {
         padding: 2rem 0;
         background: white;
         border-bottom: 1px solid var(--gray-200);
@@ -197,7 +203,7 @@
         top: 81px;
         z-index: 40;
         box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-      }
+      } */
 
       .search-container {
         display: flex;
@@ -206,35 +212,63 @@
       }
 
       .search-wrapper {
-        flex: 1;
-        position: relative;
-      }
+  position: relative;
+  width: 100%;
+}
 
-      .search-icon {
-        position: absolute;
-        left: 1rem;
-        top: 50%;
-        transform: translateY(-50%);
-        color: var(--gray-500);
-        pointer-events: none;
-      }
+.search-icon {
+  position: absolute;
+  left: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: rgba(255, 255, 255, 0.8);
+  pointer-events: none;
+}
+
+.search-clear {
+  position: absolute;
+  right: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: rgba(255, 255, 255, 0.6);
+  padding: 0.25rem;
+  border-radius: 50%;
+  transition: var(--transition);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.search-clear:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+}
 
       .search-input {
-        width: 100%;
-        padding: 0.875rem 1rem 0.875rem 3rem;
-        border: 2px solid var(--gray-200);
-        border-radius: var(--radius-md);
-        font-size: 1rem;
-        transition: var(--transition);
-        background: var(--gray-50);
-      }
+  width: 100%;
+  padding: 0.75rem 1rem 0.75rem 3rem;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  border-radius: var(--radius-md);
+  font-size: 0.95rem;
+  transition: var(--transition);
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  backdrop-filter: blur(10px);
+}
+
+.search-input::placeholder {
+  color: rgba(255, 255, 255, 0.7);
+}
 
       .search-input:focus {
-        outline: none;
-        border-color: var(--primary);
-        background: white;
-        box-shadow: 0 0 0 3px var(--primary-light);
-      }
+  outline: none;
+  border-color: var(--secondary);
+  background: rgba(255, 255, 255, 0.15);
+  box-shadow: 0 0 0 3px rgba(0, 230, 118, 0.2);
+}
 
       .filter-toggle {
         display: none;
@@ -603,25 +637,31 @@
         gap: 2rem;
       }
 
-      .modal-image-container {
-        position: relative;
-        border-radius: var(--radius-lg);
-        overflow: hidden;
-        background: linear-gradient(45deg, var(--gray-100), var(--gray-200));
-        height: 400px;
-        width: 100%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-      }
+      .modal-image-container{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  overflow:hidden;
+}
 
-      .modal-image {
-        width: 100%;
-        height: 100%;
-        object-fit: contain;
-        transition: transform 0.3s ease;
-        padding: 2rem;
-      }
+
+.modal-image{
+  max-width:100%;
+  max-height:60vh;
+  padding:12px;
+
+  
+  border-radius:12px;
+  border:2px solid #e2e8f0;
+  background:linear-gradient(45deg,#f1f5f9,#e2e8f0);
+
+ 
+  object-fit:contain;
+
+
+  transition:transform .1s ease-out;
+  cursor:zoom-in;
+}
 
       .modal-content-wrapper {
         display: grid;
@@ -938,18 +978,42 @@
   <body>
     <!-- Header -->
     <header>
-      <div class="container">
-        <div class="header-content">
-          <div class="logo-container">
-            <img src="https://github.com/oliveeira2610/Neolayerd_Catalogo/blob/main/images/logo.png?raw=true" alt="NeoLayerd 3D" class="logo" />
-            <div class="brand-text">
-              <h1>Neolayerd 3D</h1>
-              <p>Impressões 3D de alta qualidade</p>
-            </div>
-          </div>
+  <div class="container">
+    <div class="header-content">
+      <div class="logo-container">
+        <img src="https://github.com/oliveeira2610/Neolayerd_Catalogo/blob/main/images/logo.png?raw=true" alt="NeoLayerd 3D" class="logo" />
+        <div class="brand-text">
+          <h1>Neolayerd 3D</h1>
+          <p>Impressões 3D de alta qualidade</p>
         </div>
       </div>
-    </header>
+      
+      <!-- Barra de pesquisa ao lado da logo -->
+      <div class="header-search-container">
+        <div class="search-wrapper">
+          <div class="search-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="11" cy="11" r="8" />
+              <path d="M21 21l-4.35-4.35" />
+            </svg>
+          </div>
+          <input
+            type="text"
+            id="searchBox"
+            class="search-input"
+            placeholder="Buscar produtos..."
+            onkeyup="filterProducts()"
+          />
+          <button class="search-clear" type="button" onclick="clearSearch()" style="display: none;">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M18 6L6 18M6 6l12 12" />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
 
     <!-- Hero Section -->
     <section class="hero">
@@ -985,7 +1049,7 @@
       </div>
     </section>
 
-    <!-- Search Section -->
+    <!-- Search Section
     <section class="search-section">
       <div class="container">
         <div class="search-container">
@@ -1026,7 +1090,7 @@
           </button>
         </div>
       </div>
-    </section>
+    </section> -->
 
     <!-- Categories -->
     <section class="categories-section">
