@@ -1,33 +1,33 @@
-// DADOS DOS PRODUTOS - EDITE AQUI
+
 const PRODUCTS = [
     {
         id: 1,
-        name: 'Vaso Geométrico Moderno',
-        description: 'Vaso com design geométrico minimalista, perfeito para decoração moderna.',
-        price: 89.90,
-        productionTime: '3-5 dias',
-        image: 'https://images.unsplash.com/photo-1610701596007-11502861dcfa?w=500&h=500&fit=crop',
-        colors: ['Azul Claro', 'Cinza', 'Branco'],
-        category: 'Decoração',
+        name: 'Motor Honda 160cc',
+        description: 'Impressão 3D inspirada no motor Honda 160cc, com design detalhado e visual realista. Ideal para apaixonados por motos, oficinas, decoração temática ou como peça colecionável.',
+        price: 65.90,
+        productionTime: '2-3 dias',
+        image: "/image/motorhonda160.jpg",
+        colors: ['Cinza', 'Preto', 'Branco'],
+        categories: ['Decoração', 'Iluminação'],
         specifications: {
-            material: 'PLA de alta qualidade',
-            dimensions: '12 x 15 cm',
+            material: 'ABS de alta qualidade',
+            dimensions: '12 x 9 x 9,5 cm',
             weight: '150g',
         },
     },
     {
         id: 2,
-        name: 'Miniatura Ninja',
-        description: 'Figura de ação detalhada de ninja, ideal para colecionadores e fãs de fantasia.',
-        price: 45.90,
-        productionTime: '2-4 dias',
-        image: 'https://images.unsplash.com/photo-1587825140708-dfaf72ae4b04?w=500&h=500&fit=crop',
-        colors: ['Azul', 'Preto', 'Cinza'],
-        category: 'Miniaturas',
+        name: 'Decoração de Parede BMW  ',
+        description: 'Perfeita para quartos, escritórios ou salas, unindo paixão automotiva e design moderno na decoração.',
+        price: 20.90,
+        productionTime: '1-2 dias',
+        image: "/image/decoracaoparedebmw.jpg",
+        colors: ['Azul', 'Preto', 'Cinza','Branco', 'Vermelho','verde'],
+        categories: ['Decoração'],
         specifications: {
             material: 'PLA premium',
             dimensions: '8 x 12 cm',
-            weight: '80g',
+            weight: '30g',
         },
     },
     {
@@ -38,7 +38,7 @@ const PRODUCTS = [
         productionTime: '2-3 dias',
         image: 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=500&h=500&fit=crop',
         colors: ['Branco', 'Preto', 'Cinza', 'Azul Marinho'],
-        category: 'Acessórios',
+        categories: ['Acessórios'],
         specifications: {
             material: 'PLA',
             dimensions: '10 x 8 cm',
@@ -53,7 +53,7 @@ const PRODUCTS = [
         productionTime: '4-6 dias',
         image: 'https://images.unsplash.com/photo-1610701596007-11502861dcfa?w=500&h=500&fit=crop',
         colors: ['Branco', 'Cinza', 'Preto'],
-        category: 'Organização',
+        categories: ['Organização'],
         specifications: {
             material: 'PLA resistente',
             dimensions: '20 x 15 x 12 cm',
@@ -68,7 +68,7 @@ const PRODUCTS = [
         productionTime: '5-7 dias',
         image: 'https://images.unsplash.com/photo-1578500494198-246f612d03b3?w=500&h=500&fit=crop',
         colors: ['Branco', 'Cinza', 'Preto'],
-        category: 'Iluminação',
+        categories: ['Iluminação'],
         specifications: {
             material: 'PLA premium com acabamento fosco',
             dimensions: '15 x 15 x 20 cm',
@@ -83,7 +83,7 @@ const PRODUCTS = [
         productionTime: '3-4 dias',
         image: 'https://images.unsplash.com/photo-1610701596007-11502861dcfa?w=500&h=500&fit=crop',
         colors: ['Verde', 'Verde Escuro'],
-        category: 'Decoração',
+        categories: ['Decoração'],
         specifications: {
             material: 'PLA com pintura',
             dimensions: '12 x 12 x 25 cm',
@@ -105,7 +105,7 @@ function renderProducts() {
     const searchQuery = document.getElementById('searchBox').value.toLowerCase();
 
     const filtered = PRODUCTS.filter(product => {
-        const matchesCategory = !selectedCategory || product.category === selectedCategory;
+        const matchesCategory = !selectedCategory || product.categories.includes(selectedCategory);
         const matchesSearch = !searchQuery || 
             product.name.toLowerCase().includes(searchQuery) ||
             product.description.toLowerCase().includes(searchQuery);
@@ -126,7 +126,14 @@ function renderProducts() {
         <div class="product-card" onclick="openModal(${product.id})">
             <img src="${product.image}" alt="${product.name}" class="product-image">
             <div class="product-content">
-                <div class="product-category">${product.category}</div>
+                ${product.categories.length > 0 ? `
+                    <div class="product-colors">
+                        <div class="colors-label">📁 ${product.categories.length} categoria${product.categories.length !== 1 ? 's' : ''}</div>
+                        <div class="colors-list">
+                            ${product.categories.map(cat => `<span class="color-tag">${cat}</span>`).join('')}
+                        </div>
+                    </div>
+                ` : ''}
                 <h3 class="product-name">${product.name}</h3>
                 <p class="product-description">${product.description}</p>
                 <div class="product-specs">
@@ -150,19 +157,27 @@ function renderProducts() {
 }
 
 function renderCategories() {
-    const categories = [...new Set(PRODUCTS.map(p => p.category))];
+    const allCategories = [];
+    PRODUCTS.forEach(p => {
+        p.categories.forEach(cat => {
+            if (!allCategories.includes(cat)) {
+                allCategories.push(cat);
+            }
+        });
+    });
+
     const container = document.getElementById('categoryButtons');
     const footer = document.getElementById('footerCategories');
 
     container.innerHTML = `
         <button class="category-btn active" onclick="selectCategory(null)">Todos (${PRODUCTS.length})</button>
-        ${categories.map(cat => {
-            const count = PRODUCTS.filter(p => p.category === cat).length;
+        ${allCategories.map(cat => {
+            const count = PRODUCTS.filter(p => p.categories.includes(cat)).length;
             return `<button class="category-btn" onclick="selectCategory('${cat}')">${cat} (${count})</button>`;
         }).join('')}
     `;
 
-    footer.innerHTML = categories.map(cat => `
+    footer.innerHTML = allCategories.map(cat => `
         <li><a href="#" onclick="selectCategory('${cat}'); return false;">${cat}</a></li>
     `).join('');
 }
@@ -209,6 +224,17 @@ function openModal(productId) {
             .join('');
     } else {
         colorsSection.style.display = 'none';
+    }
+
+    // Categories
+    const categoriesSection = document.getElementById('categoriesSection');
+    if (product.categories.length > 0) {
+        categoriesSection.style.display = 'block';
+        document.getElementById('modalCategories').innerHTML = product.categories
+            .map(cat => `<div class="modal-color">${cat}</div>`)
+            .join('');
+    } else {
+        categoriesSection.style.display = 'none';
     }
 
     // Specifications
