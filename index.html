@@ -37,6 +37,7 @@
             --radius-md: 0.5rem;
             --radius-lg: 0.75rem;
             --transition: all 0.2s ease;
+            --gold: linear-gradient(145deg, #FFD700 0%, #FDB931 35%, #FFD700 70%, #FDB931 100%);
         }
 
         body {
@@ -69,7 +70,6 @@
             box-shadow: var(--shadow-sm);
         }
 
-        /* Header Top Row - Logo e Botão de Busca */
         .header-top {
             display: flex;
             align-items: center;
@@ -105,7 +105,6 @@
             display: none;
         }
 
-        /* Botão de busca para mobile */
         .search-toggle {
             background: rgba(255, 255, 255, 0.1);
             border: 1px solid rgba(255, 255, 255, 0.2);
@@ -127,7 +126,6 @@
             border-color: var(--secondary);
         }
 
-        /* Barra de busca expandida */
         .header-search-container {
             display: none;
             padding: 0 0 1rem 0;
@@ -208,7 +206,6 @@
             color: white;
         }
 
-        /* Versão Desktop da busca */
         .desktop-search {
             display: none;
         }
@@ -566,7 +563,6 @@
             }
         }
 
-        /* IMAGEM DO MODAL */
         .modal-image-container {
             display: flex;
             justify-content: center;
@@ -593,14 +589,12 @@
             max-height: 100%;
         }
 
-        /* Conteúdo do Modal */
         .modal-content-main {
             display: flex;
             flex-direction: column;
             gap: 2rem;
         }
 
-        /* Descrição */
         .modal-description {
             padding-bottom: 1.5rem;
             border-bottom: 1px solid var(--gray-200);
@@ -621,7 +615,6 @@
             font-size: 0.9375rem;
         }
 
-        /* Sistema de Tamanhos */
         .size-selector {
             margin-bottom: 0;
         }
@@ -686,19 +679,6 @@
             font-size: 0.875rem;
         }
 
-        /* Indicador de LED nos tamanhos */
-        .size-led-indicator {
-            display: inline-block;
-            font-size: 0.75rem;
-            margin-left: 0.25rem;
-            opacity: 0.8;
-        }
-
-        .size-led-indicator.no-led {
-            opacity: 0.5;
-        }
-
-        /* Sistema de Cores */
         .color-selector {
             margin-bottom: 0;
         }
@@ -746,19 +726,96 @@
             transition: var(--transition);
         }
 
-        /* Gradiente arco-íris para cor personalizada */
         .color-option:has(.color-circle[style*="#FF6B35"]) .color-circle {
             background: linear-gradient(90deg, 
-                #ff0000 0%,    /* Vermelho */
-                #ff9900 20%,   /* Laranja */
-                #ffff00 40%,   /* Amarelo */
-                #00ff00 60%,   /* Verde */
-                #0099ff 80%,   /* Azul */
-                #9900ff 100%   /* Roxo */
+                #ff0000 0%,
+                #ff9900 20%,
+                #ffff00 40%,
+                #00ff00 60%,
+                #0099ff 80%,
+                #9900ff 100%
             ) !important;
             border: 2px solid rgba(0, 0, 0, 0.2);
             animation: rainbowRotate 3s linear infinite;
         }
+
+        /* Meia preta meia cinza */
+.color-option:has(.color-circle[style*="#PRETOCINZA"]) .color-circle,
+.color-option:has(.color-circle[style*="#PRETOCINZAA"]) .color-circle {
+    background: linear-gradient(45deg, 
+        #000000 0% 50%,
+        #808080 50% 100%
+    ) !important;
+    border: 2px solid rgba(0, 0, 0, 0.2);
+}
+
+/* Meia branca meia amarela */
+.color-option:has(.color-circle[style*="#BRANCOAMARELO"]) .color-circle,
+.color-option:has(.color-circle[style*="#BRANCOAMARELOO"]) .color-circle {
+    background: linear-gradient(45deg, 
+        #FFFFFF 0% 50%,
+        #FFD700 50% 100%
+    ) !important;
+    border: 2px solid rgba(0, 0, 0, 0.2);
+}
+
+/* Meia preta meia branca */
+.color-option:has(.color-circle[style*="#PRETOBRANCO"]) .color-circle,
+.color-option:has(.color-circle[style*="#PRETOBRANCOO"]) .color-circle {
+    background: linear-gradient(45deg, 
+        #000000 0% 50%,
+        #FFFFFF 50% 100%
+    ) !important;
+    border: 2px solid rgba(0, 0, 0, 0.2);
+}
+
+/* 33% salmão, 33% preta, 33% cinza */
+.color-option:has(.color-circle[style*="#SALMAOPRETOCINZA"]) .color-circle,
+.color-option:has(.color-circle[style*="#SALMAOPRETOCINZAA"]) .color-circle {
+    background: conic-gradient(
+        #FA8072 0deg 120deg,
+        #000000 120deg 240deg,
+        #808080 240deg 360deg
+    ) !important;
+    border: 2px solid rgba(0, 0, 0, 0.2);
+    border-radius: 50%;
+}
+
+/* Preta e marrom */
+.color-option:has(.color-circle[style*="#PRETOMARROM"]) .color-circle,
+.color-option:has(.color-circle[style*="#PRETOMARROMM"]) .color-circle {
+    background: linear-gradient(45deg, 
+        #000000 0% 50%,
+        #8B4513 50% 100%
+    ) !important;
+    border: 2px solid rgba(0, 0, 0, 0.2);
+}
+
+/* Bege e marrom */
+.color-option:has(.color-circle[style*="#BEGEMARROM"]) .color-circle,
+.color-option:has(.color-circle[style*="#BEGEMARROMM"]) .color-circle {
+    background: linear-gradient(45deg, 
+        #F5F5DC 0% 50%,
+        #8B4513 50% 100%
+    ) !important;
+    border: 2px solid rgba(0, 0, 0, 0.2);
+}
+
+/* Efeito de brilho metálico */
+.color-option:has(.color-circle[style*="#DOURADO"]) .color-circle,
+.color-option:has(.color-circle[style*="#DOURADOO"]) .color-circle,
+.color-option:has(.color-circle[style*="#DOURADOOO"]) .color-circle {
+    background: linear-gradient(145deg, 
+        #FFD700 0%,
+        #FDB931 30%,
+        #FFD700 60%,
+        #FDB931 100%
+    ) !important;
+    border: 2px solid rgba(184, 134, 11, 0.3);
+    box-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
+    position: relative;
+    overflow: hidden;
+}
 
         @keyframes rainbowRotate {
             0% {
@@ -780,7 +837,6 @@
             text-align: center;
         }
 
-        /* Sistema de LED */
         .led-selector {
             margin-bottom: 0;
         }
@@ -834,7 +890,6 @@
             font-size: 0.875rem;
         }
 
-        /* Avisos de Personalização */
         .custom-notice {
             background: var(--gray-100);
             padding: 1rem;
@@ -850,7 +905,6 @@
             line-height: 1.5;
         }
 
-        /* Preço Dinâmico */
         .dynamic-price {
             background: var(--primary-light);
             padding: 1.5rem;
@@ -896,7 +950,6 @@
             font-weight: 600;
         }
 
-        /* Accordion para Especificações Técnicas */
         .specs-accordion {
             border: 1px solid var(--gray-200);
             border-radius: var(--radius-md);
@@ -982,7 +1035,6 @@
             color: var(--dark);
         }
 
-        /* Botões de Contato */
         .contact-buttons {
             display: flex;
             flex-direction: column;
@@ -1035,7 +1087,6 @@
             box-shadow: 0 4px 12px rgba(228, 64, 95, 0.3);
         }
 
-        /* Botão Fechar */
         .modal-actions {
             margin-top: 2rem;
             padding-top: 1.5rem;
@@ -1103,6 +1154,9 @@
 
         .footer-links li {
             margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
         }
 
         .footer-links a {
@@ -1118,6 +1172,11 @@
             color: var(--secondary);
         }
 
+        .footer-links span {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.875rem;
+        }
+
         .footer-bottom {
             border-top: 1px solid rgba(255, 255, 255, 0.1);
             padding-top: 2rem;
@@ -1126,7 +1185,6 @@
             font-size: 0.875rem;
         }
 
-        /* Empty State */
         .empty-state {
             text-align: center;
             padding: 3rem 1rem;
@@ -1148,9 +1206,7 @@
             margin-bottom: 1.5rem;
         }
 
-        /* Responsividade */
         @media (min-width: 768px) {
-            /* Desktop */
             .header-top {
                 padding: 1rem 0;
             }
@@ -1255,7 +1311,6 @@
             }
         }
 
-        /* Animações */
         @keyframes fadeIn {
             from {
                 opacity: 0;
@@ -1271,7 +1326,6 @@
             animation: fadeIn 0.3s ease-out;
         }
 
-        /* Scrollbar personalizada */
         ::-webkit-scrollbar {
             width: 8px;
         }
@@ -1288,10 +1342,41 @@
         ::-webkit-scrollbar-thumb:hover {
             background: var(--gray-400);
         }
+
+        .category-group {
+            margin-bottom: 3rem;
+        }
+
+        .category-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 1.5rem;
+        }
+
+        .category-header h3 {
+            font-size: 1.5rem;
+            color: var(--dark);
+            font-weight: 600;
+        }
+
+        .category-header .view-all {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.875rem;
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+        }
+
+        .category-header .view-all:hover {
+            color: var(--primary-dark);
+            text-decoration: underline;
+        }
     </style>
 </head>
 <body>
-    <!-- Header -->
     <header>
         <div class="container">
             <div class="header-top">
@@ -1303,7 +1388,6 @@
                     </div>
                 </div>
                 
-                <!-- Botão de busca para mobile -->
                 <button class="search-toggle" onclick="toggleSearch()">
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <circle cx="11" cy="11" r="8" />
@@ -1311,7 +1395,6 @@
                     </svg>
                 </button>
                 
-                <!-- Barra de busca para desktop -->
                 <div class="desktop-search">
                     <div class="search-wrapper">
                         <div class="search-icon">
@@ -1336,7 +1419,6 @@
                 </div>
             </div>
             
-            <!-- Barra de busca expandida para mobile -->
             <div class="header-search-container" id="headerSearch">
                 <div class="search-wrapper">
                     <div class="search-icon">
@@ -1362,7 +1444,6 @@
         </div>
     </header>
 
-    <!-- Hero Section -->
     <section class="hero">
         <div class="container">
             <div class="hero-content">
@@ -1382,21 +1463,19 @@
         </div>
     </section>
 
-    <!-- Categories -->
     <section class="categories-section">
         <div class="container">
             <div class="categories-grid" id="categoryButtons"></div>
         </div>
     </section>
 
-    <!-- Products -->
     <section id="products" class="products-section">
         <div class="container">
             <div class="section-header">
                 <h2 class="section-title">Nossos Produtos</h2>
                 <span class="results-count" id="resultsCount">Carregando produtos...</span>
             </div>
-            <div class="products-grid" id="productsGrid"></div>
+            <div id="productsContainer"></div>
             <div class="empty-state" id="noProducts" style="display: none">
                 <div class="empty-icon">🔍</div>
                 <h3>Nenhum produto encontrado</h3>
@@ -1411,7 +1490,6 @@
         </div>
     </section>
 
-    <!-- Modal -->
     <div class="modal" id="productModal">
         <div class="modal-content">
             <div class="modal-header">
@@ -1420,13 +1498,11 @@
             </div>
             <div class="modal-body">
                 <div class="modal-grid">
-                    <!-- Coluna da Esquerda: Imagem -->
                     <div>
                         <div class="modal-image-container">
                             <img id="modalImage" class="modal-image" src="" alt="">
                         </div>
                         
-                        <!-- Preço Dinâmico (na coluna da imagem em mobile, abaixo da imagem) -->
                         <div class="dynamic-price">
                             <h3>
                                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -1441,9 +1517,7 @@
                         </div>
                     </div>
                     
-                    <!-- Coluna da Direita: Informações -->
                     <div class="modal-content-main">
-                        <!-- Descrição -->
                         <div class="modal-description">
                             <h3>
                                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -1455,7 +1529,6 @@
                             <p id="modalDescription"></p>
                         </div>
                         
-                        <!-- Sistema de Tamanhos -->
                         <div class="size-selector" id="sizeSelector">
                             <h3>
                                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -1470,7 +1543,6 @@
                             </div>
                         </div>
                         
-                        <!-- Sistema de Cores -->
                         <div class="color-selector" id="colorSelector">
                             <h3>
                                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -1484,7 +1556,6 @@
                             </div>
                         </div>
                         
-                        <!-- Sistema de LED -->
                         <div class="led-selector" id="ledSelector">
                             <h3>
                                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -1495,7 +1566,6 @@
                             <div class="led-options" id="ledOptions"></div>
                         </div>
                         
-                        <!-- Accordion para Especificações Técnicas -->
                         <div class="specs-accordion">
                             <div class="accordion-header" onclick="toggleAccordion()">
                                 <h3>
@@ -1513,7 +1583,6 @@
                             </div>
                         </div>
                         
-                        <!-- Botões de Contato -->
                         <div class="contact-buttons">
                             <a href="#" id="whatsappButton" class="whatsapp-button" target="_blank" onclick="sendToWhatsApp(event)">
                                 <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
@@ -1521,15 +1590,8 @@
                                 </svg>
                                 WhatsApp
                             </a>
-                            <!-- <a href="#" id="instagramButton" class="instagram-button" target="_blank" onclick="sendToInstagram(event)">
-                                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                                    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zm0 10.162a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/>
-                                </svg>
-                                Instagram
-                            </a> -->
                         </div>
                         
-                        <!-- Botão Fechar -->
                         <div class="modal-actions">
                             <button class="close-modal-btn" onclick="closeModal()">
                                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -1544,14 +1606,13 @@
         </div>
     </div>
 
-    <!-- Footer -->
     <footer>
         <div class="container">
             <div class="footer-content">
                 <div class="footer-section">
-                    <h3>Neolayerd </h3>
+                    <h3>Neolayerd</h3>
                     <p>
-                        Especialistas em impressões 3D de alta qualidade com
+                        Impressões 3D de alta qualidade com
                         personalização completa e acabamento profissional.
                     </p>
                 </div>
@@ -1567,13 +1628,13 @@
                                 <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
                                 <polyline points="22,6 12,13 2,6"/>
                             </svg>
-                            <a href="mailto:contato@neolayerd3d.com">contato@neolayerd3d.com</a>
+                            <span>neolayerd@gmail.com</span>
                         </li>
                         <li>
                             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                 <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
                             </svg>
-                            <a href="tel:+5511999999999">(11) 99999-9999</a>
+                            <span>(14) 98809-2731</span>
                         </li>
                     </ul>
                 </div>
@@ -1590,24 +1651,18 @@
                 id: 1,
                 name: "Motor Honda 160cc",
                 description: "Impressão 3D inspirada no motor Honda 160cc, com design detalhado e visual realista. Ideal para apaixonados por motos, oficinas, decoração temática ou como peça colecionável.",
-                basePrice: 39.9,
+                basePrice: 45.9,
                 productionTime: "2-3 dias",
                 image: "https://github.com/oliveeira2610/Neolayerd_Catalogo/blob/main/images/motorhonda160.jpg?raw=true",
-                colors: [
-                    { name: "Azul", hex: "#0052cc", priceMultiplier: 1, isCustom: false },
-                    { name: "Preto", hex: "#000000", priceMultiplier: 1, isCustom: false },
-                    { name: "Cinza", hex: "#808080", priceMultiplier: 1, isCustom: false },
-                    { name: "Branco", hex: "#FFFFFF", priceMultiplier: 1, isCustom: false },
-                    { name: "Vermelho", hex: "#FF0000", priceMultiplier: 1, isCustom: false },
-                    { name: "Verde", hex: "#00FF00", priceMultiplier: 1, isCustom: false },
-                    { name: "Dourado", hex: "#FFD700", priceMultiplier: 1.2, isCustom: false },
+                colors: [  
+                    { name: "Preto E cinza", hex: "#PRETOCINZA", priceMultiplier: 1, isCustom: false },
                     { name: "Personalizada", hex: "#FF6B35", priceMultiplier: null, isCustom: true }
                 ],
                 sizes: [
                     { 
                         name: "Pequeno", 
                         dimensions: "8 x 6 x 6 cm", 
-                        price: 39.9, 
+                        price: 45.9, 
                         isCustom: false,
                         ledAvailable: false
                     },
@@ -1616,7 +1671,7 @@
                         dimensions: "12 x 9 x 9.5 cm", 
                         price: 65.9, 
                         isCustom: false,
-                        ledAvailable: true
+                        ledAvailable: false
                     },
                     { 
                         name: "Grande", 
@@ -1644,7 +1699,7 @@
                     peso: "Varia por tamanho",
                     acabamento: "Lisa e brilhante",
                     tipoLED: "Opção conforme seleção",
-                    notaLED: "LED disponível apenas nos tamanhos Médio e Grande"
+                    notaLED: "LED disponível apenas no tamanho Grande"
                 },
             },
             {
@@ -1661,7 +1716,7 @@
                     { name: "Branco", hex: "#FFFFFF", priceMultiplier: 1, isCustom: false },
                     { name: "Vermelho", hex: "#FF0000", priceMultiplier: 1, isCustom: false },
                     { name: "Verde", hex: "#00FF00", priceMultiplier: 1, isCustom: false },
-                    { name: "Dourado", hex: "#FFD700", priceMultiplier: 1.2, isCustom: false },
+                    { name: "Dourado", hex: "#DOURADO", priceMultiplier: 1.2, isCustom: false},
                     { name: "Personalizada", hex: "#FF6B35", priceMultiplier: null, isCustom: true }
                 ],
                 sizes: [
@@ -1670,21 +1725,21 @@
                         dimensions: "15 x 12 cm", 
                         price: 19.9, 
                         isCustom: false,
-                        ledAvailable: null
+                        ledAvailable: false
                     },
                     { 
                         name: "Médio", 
                         dimensions: "18 x 15 cm", 
                         price: 26.9, 
                         isCustom: false,
-                        ledAvailable: null
+                        ledAvailable: false
                     },
                     { 
                         name: "Grande", 
                         dimensions: "20 x 17 cm", 
                         price: 34.9, 
                         isCustom: false,
-                        ledAvailable: null
+                        ledAvailable: false
                     },
                     { 
                         name: "Personalizado", 
@@ -1719,7 +1774,7 @@
                     { name: "Branco", hex: "#FFFFFF", priceMultiplier: 1, isCustom: false },
                     { name: "Vermelho", hex: "#FF0000", priceMultiplier: 1, isCustom: false },
                     { name: "Verde", hex: "#00FF00", priceMultiplier: 1, isCustom: false },
-                    { name: "Dourado", hex: "#FFD700", priceMultiplier: 1.2, isCustom: false },
+                    { name: "Dourado", hex: "#DOURADO", priceMultiplier: 1.2, isCustom: false},
                     { name: "Personalizada", hex: "#FF6B35", priceMultiplier: null, isCustom: true }
                 ],
                 sizes: [
@@ -1728,21 +1783,21 @@
                         dimensions: "15 x 12 cm", 
                         price: 19.9, 
                         isCustom: false,
-                        ledAvailable: null
+                        ledAvailable: false
                     },
                     { 
                         name: "Médio", 
                         dimensions: "18 x 15 cm", 
                         price: 26.9, 
                         isCustom: false,
-                        ledAvailable: null
+                        ledAvailable: false
                     },
                     { 
                         name: "Grande", 
                         dimensions: "20 x 17 cm", 
                         price: 34.9, 
                         isCustom: false,
-                        ledAvailable: null
+                        ledAvailable: false
                     },
                     { 
                         name: "Personalizado", 
@@ -1771,13 +1826,7 @@
                 productionTime: "1-2 dias",
                 image: "https://github.com/oliveeira2610/Neolayerd_Catalogo/blob/main/images/saboneteiraPato.jpeg?raw=true",
                 colors: [
-                    { name: "Azul", hex: "#0052cc", priceMultiplier: 1, isCustom: false },
-                    { name: "Preto", hex: "#000000", priceMultiplier: 1, isCustom: false },
-                    { name: "Cinza", hex: "#808080", priceMultiplier: 1, isCustom: false },
-                    { name: "Branco", hex: "#FFFFFF", priceMultiplier: 1, isCustom: false },
-                    { name: "Vermelho", hex: "#FF0000", priceMultiplier: 1, isCustom: false },
-                    { name: "Verde", hex: "#00FF00", priceMultiplier: 1, isCustom: false },
-                    { name: "Dourado", hex: "#FFD700", priceMultiplier: 1.2, isCustom: false },
+                    { name: "Branco e Amarelo", hex: "#BRANCOAMARELO", priceMultiplier: 1, isCustom: false },
                     { name: "Personalizada", hex: "#FF6B35", priceMultiplier: null, isCustom: true }
                 ],
                 sizes: [
@@ -1786,14 +1835,14 @@
                         dimensions: "12 x 7 x 4 cm", 
                         price: 16.9, 
                         isCustom: false,
-                        ledAvailable: null
+                        ledAvailable: false
                     },
                     { 
                         name: "Médio", 
                         dimensions: "18 x 13 x 6 cm", 
                         price: 25.9, 
                         isCustom: false,
-                        ledAvailable: null
+                        ledAvailable: false
                     },
                     { 
                         name: "Personalizado", 
@@ -1823,13 +1872,7 @@
                 productionTime: "2-3 dias",
                 image: "https://github.com/oliveeira2610/Neolayerd_Catalogo/blob/main/images/Suportecarneiropapelhigienico.jpeg?raw=true",
                 colors: [
-                    { name: "Azul", hex: "#0052cc", priceMultiplier: 1, isCustom: false },
-                    { name: "Preto", hex: "#000000", priceMultiplier: 1, isCustom: false },
-                    { name: "Cinza", hex: "#808080", priceMultiplier: 1, isCustom: false },
-                    { name: "Branco", hex: "#FFFFFF", priceMultiplier: 1, isCustom: false },
-                    { name: "Vermelho", hex: "#FF0000", priceMultiplier: 1, isCustom: false },
-                    { name: "Verde", hex: "#00FF00", priceMultiplier: 1, isCustom: false },
-                    { name: "Dourado", hex: "#FFD700", priceMultiplier: 1.2, isCustom: false },
+                    { name: "Preto e Branco", hex: "#PRETOBRANCO", priceMultiplier: 1, isCustom: false },
                     { name: "Personalizada", hex: "#FF6B35", priceMultiplier: null, isCustom: true }
                 ],
                 sizes: [
@@ -1838,14 +1881,14 @@
                         dimensions: "21 x 10 x 13 cm", 
                         price: 36.9, 
                         isCustom: false,
-                        ledAvailable: null
+                        ledAvailable: false
                     },
                     { 
                         name: "Grande", 
                         dimensions: "26 x 12 x 16 cm", 
                         price: 44.9, 
                         isCustom: false,
-                        ledAvailable: null
+                        ledAvailable: false
                     },
                     { 
                         name: "Personalizado", 
@@ -1869,7 +1912,7 @@
             },
             {
                 id: 6,
-                name: "Chaveiro Estrela Decorativa ",
+                name: "Chaveiro Estrela Decorativa",
                 description: "Chaveiro Estrela decorativa em impressão 3D, ideal para usar como chaveiro, pendurar em bolsas, mochilas ou no carro. Um detalhe simples que leva alegria para o dia a dia.",
                 basePrice: 28.9,
                 productionTime: "1-2 dias",
@@ -1881,7 +1924,7 @@
                     { name: "Branco", hex: "#FFFFFF", priceMultiplier: 1, isCustom: false },
                     { name: "Vermelho", hex: "#FF0000", priceMultiplier: 1, isCustom: false },
                     { name: "Verde", hex: "#00FF00", priceMultiplier: 1, isCustom: false },
-                    { name: "Dourado", hex: "#FFD700", priceMultiplier: 1.2, isCustom: false },
+                    { name: "Dourado", hex: "#DOURADO", priceMultiplier: 1.2, isCustom: false},
                     { name: "Personalizada", hex: "#FF6B35", priceMultiplier: null, isCustom: true }
                 ],
                 sizes: [
@@ -1890,21 +1933,21 @@
                         dimensions: "6 x 6 x 6 cm", 
                         price: 28.9, 
                         isCustom: false,
-                        ledAvailable: null
+                        ledAvailable: false
                     },
                     { 
                         name: "Médio", 
                         dimensions: "10 x 10 x 10 cm", 
                         price: 39.9, 
                         isCustom: false,
-                        ledAvailable: null
+                        ledAvailable: false
                     },
                     { 
                         name: "Grande", 
                         dimensions: "14 x 14 x 14 cm", 
                         price: 54.9, 
                         isCustom: false,
-                        ledAvailable: null
+                        ledAvailable: false
                     },
                     { 
                         name: "Personalizado", 
@@ -1928,19 +1971,13 @@
             },
             {
               id: 7,
-                name: "Unidade Chaveiro Vingadores ",
-                description: "Chaveiro decorativo em impressão 3D inspirado nos personagens dos Vingadores. Ideal para fãs da Marvel, perfeito para chaves, mochilas ou como item colecionável. ",
+                name: "Unidade Chaveiro Vingadores",
+                description: "Chaveiro decorativo em impressão 3D inspirado nos personagens dos Vingadores. Ideal para fãs da Marvel, perfeito para chaves, mochilas ou como item colecionável.",
                 basePrice: 10.9,
                 productionTime: "1-2 dias",
                 image: "https://github.com/oliveeira2610/Neolayerd_Catalogo/blob/main/images/ChaveirosVingadores.jpg?raw=true",
                 colors: [
-                    { name: "Azul", hex: "#0052cc", priceMultiplier: 1, isCustom: false },
-                    { name: "Preto", hex: "#000000", priceMultiplier: 1, isCustom: false },
-                    { name: "Cinza", hex: "#808080", priceMultiplier: 1, isCustom: false },
-                    { name: "Branco", hex: "#FFFFFF", priceMultiplier: 1, isCustom: false },
-                    { name: "Vermelho", hex: "#FF0000", priceMultiplier: 1, isCustom: false },
-                    { name: "Verde", hex: "#00FF00", priceMultiplier: 1, isCustom: false },
-                    { name: "Dourado", hex: "#FFD700", priceMultiplier: 1.2, isCustom: false },
+                    { name: "Preto e Branco", hex: "#PRETOBRANCO", priceMultiplier: 1, isCustom: false },
                     { name: "Personalizada", hex: "#FF6B35", priceMultiplier: null, isCustom: true }
                 ],
                 sizes: [
@@ -1949,21 +1986,21 @@
                         dimensions: "3,7 x 4,5 x 4 cm", 
                         price: 10.9, 
                         isCustom: false,
-                        ledAvailable: null
+                        ledAvailable: false
                     },
                     { 
                         name: "Médio", 
                         dimensions: "4,5 x 5,5 x 5 cm", 
                         price: 16.9, 
                         isCustom: false,
-                        ledAvailable: null
+                        ledAvailable: false
                     },
                     { 
                         name: "Grande", 
                         dimensions: "6 x 7,5 x 6,5 cm", 
                         price: 15.9, 
                         isCustom: false,
-                        ledAvailable: null
+                        ledAvailable: false
                     },
                     { 
                         name: "Personalizado", 
@@ -1985,22 +2022,15 @@
                     notaLED: "LED não disponível"
                 },
             },
-
             {
               id: 8,
-                name: "Suporte De Chaves Multifuncional  ",
+                name: "Suporte De Chaves Multifuncional",
                 description: "Suporte em impressão 3D desenvolvido para organizar itens do dia a dia, como chaves, óculos e acessórios em geral. Ideal para halls de entrada, unindo praticidade e decoração.",
                 basePrice: 34.9,
                 productionTime: "2-3 dias",
                 image: "https://github.com/oliveeira2610/Neolayerd_Catalogo/blob/main/images/SuporteMultifuncional.jpg?raw=true",
                 colors: [
-                    { name: "Azul", hex: "#0052cc", priceMultiplier: 1, isCustom: false },
-                    { name: "Preto", hex: "#000000", priceMultiplier: 1, isCustom: false },
-                    { name: "Cinza", hex: "#808080", priceMultiplier: 1, isCustom: false },
-                    { name: "Branco", hex: "#FFFFFF", priceMultiplier: 1, isCustom: false },
-                    { name: "Vermelho", hex: "#FF0000", priceMultiplier: 1, isCustom: false },
-                    { name: "Verde", hex: "#00FF00", priceMultiplier: 1, isCustom: false },
-                    { name: "Dourado", hex: "#FFD700", priceMultiplier: 1.2, isCustom: false },
+                    { name: "Off white, Preto, Rose e dourado", hex: "#SALMAOPRETOCINZA", priceMultiplier: 1, isCustom: false },
                     { name: "Personalizada", hex: "#FF6B35", priceMultiplier: null, isCustom: true }
                 ],
                 sizes: [
@@ -2009,21 +2039,21 @@
                         dimensions: "13 x 9 x 9 cm", 
                         price: 34.9, 
                         isCustom: false,
-                        ledAvailable: null
+                        ledAvailable: false
                     },
                     { 
                         name: "Médio", 
                         dimensions: "17 x 12 x 12 cm", 
                         price: 42.9, 
                         isCustom: false,
-                        ledAvailable: null
+                        ledAvailable: false
                     },
                     { 
                         name: "Grande", 
                         dimensions: "20 x 16 x 14 cm", 
                         price: 49.9, 
                         isCustom: false,
-                        ledAvailable: null
+                        ledAvailable: false
                     },
                     { 
                         name: "Personalizado", 
@@ -2045,10 +2075,9 @@
                     notaLED: "LED não disponível"
                 },
             },
-
             {
               id: 9,
-                name: "Suporte de Chaves Mazda Miata ",
+                name: "Unidade Suporte de Chaves Mazda Miata",
                 description: "Perfeito para entrada da casa, escritório ou ambientes comerciais, ajudando a manter tudo no lugar com um toque decorativo. Ideal para fãs de carros, especialmente do Mazda Miata, unindo funcionalidade e estilo na organização das chaves.",
                 basePrice: 35.9,
                 productionTime: "1-2 dias",
@@ -2060,23 +2089,23 @@
                     { name: "Branco", hex: "#FFFFFF", priceMultiplier: 1, isCustom: false },
                     { name: "Vermelho", hex: "#FF0000", priceMultiplier: 1, isCustom: false },
                     { name: "Verde", hex: "#00FF00", priceMultiplier: 1, isCustom: false },
-                    { name: "Dourado", hex: "#FFD700", priceMultiplier: 1.2, isCustom: false },
+                    { name: "Dourado", hex: "#DOURADO", priceMultiplier: 1.2, isCustom: false},
                     { name: "Personalizada", hex: "#FF6B35", priceMultiplier: null, isCustom: true }
                 ],
                 sizes: [
                   { 
-                        name: "Uma chave", 
+                        name: "Modelo de uma chave", 
                         dimensions: "10 x 9 x 4 cm", 
                         price: 35.9, 
                         isCustom: false,
-                        ledAvailable: null
+                        ledAvailable: false
                     },
                     { 
-                        name: "Duas chaves", 
+                        name: "Modelo de duas chaves", 
                         dimensions: "11 x 10 x 5 cm", 
                         price: 40.9, 
                         isCustom: false,
-                        ledAvailable: null
+                        ledAvailable: false
                     },
                     { 
                         name: "Personalizado", 
@@ -2098,22 +2127,15 @@
                     notaLED: "LED não disponível"
                 },
             },
-
             {
               id: 10,
                 name: "Suporte de Chave Gato",
-                description: " Perfeito para entrada da casa, escritório ou ambientes comerciais, ajudando a manter tudo no lugar com um toque decorativo. Ideal para amantes de gatos, unindo funcionalidade e estilo na organização das chaves.",
+                description: "Perfeito para entrada da casa, escritório ou ambientes comerciais, ajudando a manter tudo no lugar com um toque decorativo. Ideal para amantes de gatos, unindo funcionalidade e estilo na organização das chaves.",
                 basePrice: 16.9,
                 productionTime: "1-2 dias",
                 image: "https://github.com/oliveeira2610/Neolayerd_Catalogo/blob/main/images/PortachaveGato.png?raw=true",
                 colors: [
-                    { name: "Azul", hex: "#0052cc", priceMultiplier: 1, isCustom: false },
-                    { name: "Preto", hex: "#000000", priceMultiplier: 1, isCustom: false },
-                    { name: "Cinza", hex: "#808080", priceMultiplier: 1, isCustom: false },
-                    { name: "Branco", hex: "#FFFFFF", priceMultiplier: 1, isCustom: false },
-                    { name: "Vermelho", hex: "#FF0000", priceMultiplier: 1, isCustom: false },
-                    { name: "Verde", hex: "#00FF00", priceMultiplier: 1, isCustom: false },
-                    { name: "Dourado", hex: "#FFD700", priceMultiplier: 1.2, isCustom: false },
+                    { name: "Preto e Branco", hex: "#PRETOBRANCO", priceMultiplier: 1, isCustom: false },    
                     { name: "Personalizada", hex: "#FF6B35", priceMultiplier: null, isCustom: true }
                 ],
                 sizes: [
@@ -2122,21 +2144,21 @@
                         dimensions: "4,5 x 6 x 4.5 cm", 
                         price: 16.9, 
                         isCustom: false,
-                        ledAvailable: null
+                        ledAvailable: false
                     },
                     { 
                         name: "Duas Unidades", 
                         dimensions: "4,5 x 6 x 4.5 cm", 
                         price: 29.9, 
                         isCustom: false,
-                        ledAvailable: null
+                        ledAvailable: false
                     },
                     { 
                         name: "Três Unidades", 
                         dimensions: "26 x 12 x 16 cm", 
                         price: 39.9, 
                         isCustom: false,
-                        ledAvailable: null
+                        ledAvailable: false
                     },
                     { 
                         name: "Personalizado", 
@@ -2158,8 +2180,7 @@
                     notaLED: "LED não disponível"
                 },
             },
-
-             {
+            {
               id: 12,
                 name: "Suporte de Chaves Empresariais Colmeia",
                 description: "Desenvolvido para organizar chaves de empresas, escritórios, espaços comerciais e casas. Funcional e prático, mantém as chaves sempre acessíveis e organizadas de forma profissional",
@@ -2173,7 +2194,7 @@
                     { name: "Branco", hex: "#FFFFFF", priceMultiplier: 1, isCustom: false },
                     { name: "Vermelho", hex: "#FF0000", priceMultiplier: 1, isCustom: false },
                     { name: "Verde", hex: "#00FF00", priceMultiplier: 1, isCustom: false },
-                    { name: "Dourado", hex: "#FFD700", priceMultiplier: 1.2, isCustom: false },
+                    { name: "Dourado", hex: "#DOURADO", priceMultiplier: 1.2, isCustom: false},
                     { name: "Personalizada", hex: "#FF6B35", priceMultiplier: null, isCustom: true }
                 ],
                 sizes: [
@@ -2182,21 +2203,21 @@
                         dimensions: "11 x 7 x 2,5 cm", 
                         price: 21.9, 
                         isCustom: false,
-                        ledAvailable: null
+                        ledAvailable: false
                     },
                     { 
                         name: "Médio 14 chaves", 
                         dimensions: "17 x 14 x 2,5 cm", 
                         price: 59.9, 
                         isCustom: false,
-                        ledAvailable: null
+                        ledAvailable: false
                     },
                     { 
                         name: "Grande 21 chaves", 
                         dimensions: "20 x 21 x 2,5 cm", 
                         price: 67.9, 
                         isCustom: false,
-                        ledAvailable: null
+                        ledAvailable: false
                     },
                     { 
                         name: "Personalizado", 
@@ -2218,14 +2239,13 @@
                     notaLED: "LED não disponível"
                 },
             },
-
             {
               id: 13,
-                name: "Suporte em Espiral para Toalha de Papel",
-                description: "Desenvolvido para acomodar toalhas de papel de forma prática e estilosa. Ideal para cozinhas, áreas gourmet ou mesas, unindo funcionalidade e um toque moderno na organização.",
-                basePrice: 45.9,
-                productionTime: "3-4 dias",
-                image: "https://github.com/oliveeira2610/Neolayerd_Catalogo/blob/main/images/PortaRoloDePapelToalha.png?raw=true",
+                name: "Suporte Pé de Pato para Alexa",
+                description: "Suporte de mesa desenvolvido para acomodar dispositivos Alexa com estabilidade e segurança. Design em formato de pé de pato, ideal para uso em mesas, bancadas e escritórios, sem interferir no funcionamento do aparelho.",
+                basePrice: 34.9,
+                productionTime: "1-2 dias",
+                image: "https://github.com/oliveeira2610/Neolayerd_Catalogo/blob/main/images/SuporteAlexaPato.jpg?raw=true",
                 colors: [
                     { name: "Azul", hex: "#0052cc", priceMultiplier: 1, isCustom: false },
                     { name: "Preto", hex: "#000000", priceMultiplier: 1, isCustom: false },
@@ -2233,30 +2253,30 @@
                     { name: "Branco", hex: "#FFFFFF", priceMultiplier: 1, isCustom: false },
                     { name: "Vermelho", hex: "#FF0000", priceMultiplier: 1, isCustom: false },
                     { name: "Verde", hex: "#00FF00", priceMultiplier: 1, isCustom: false },
-                    { name: "Dourado", hex: "#FFD700", priceMultiplier: 1.2, isCustom: false },
+                    { name: "Dourado", hex: "#DOURADO", priceMultiplier: 1.2, isCustom: false},
                     { name: "Personalizada", hex: "#FF6B35", priceMultiplier: null, isCustom: true }
                 ],
                 sizes: [
                   { 
-                        name: "Pequeno", 
+                        name: "Echo pop", 
                         dimensions: "13 x 13 x 14,5 cm", 
                         price: 45.9, 
                         isCustom: false,
-                        ledAvailable: null
+                        ledAvailable: false
                     },
                     { 
-                        name: "Médio", 
+                        name: "Echo Dot 3", 
                         dimensions: "16 x 16 x 18 cm", 
                         price: 79.9, 
                         isCustom: false,
-                        ledAvailable: null
+                        ledAvailable: false
                     },
                     { 
-                        name: "Grande", 
+                        name: "Echo Dot 4", 
                         dimensions: "18 x 18 x 18 cm", 
                         price: 98.9, 
                         isCustom: false,
-                        ledAvailable: null
+                        ledAvailable: false
                     },
                     { 
                         name: "Personalizado", 
@@ -2278,10 +2298,9 @@
                     notaLED: "LED não disponível"
                 },
             },
-
             {
               id: 14,
-                name: "Porta-Copos Hogwarts Express ",
+                name: "Porta-Copos Hogwarts Express",
                 description: "Conjunto de 4 unidades de porta-copos inspirados no universo de Hogwarts, com visual mágico que transforma a mesa em um detalhe temático e encantador.",
                 basePrice: 21.9,
                 productionTime: "1-3 dias",
@@ -2293,7 +2312,7 @@
                     { name: "Branco", hex: "#FFFFFF", priceMultiplier: 1, isCustom: false },
                     { name: "Vermelho", hex: "#FF0000", priceMultiplier: 1, isCustom: false },
                     { name: "Verde", hex: "#00FF00", priceMultiplier: 1, isCustom: false },
-                    { name: "Dourado", hex: "#FFD700", priceMultiplier: 1.2, isCustom: false },
+                    { name: "Dourado", hex: "#DOURADO", priceMultiplier: 1.2, isCustom: false},
                     { name: "Personalizada", hex: "#FF6B35", priceMultiplier: null, isCustom: true }
                 ],
                 sizes: [
@@ -2302,21 +2321,21 @@
                         dimensions: "9,5 x 9 x 1 cm", 
                         price: 21.9, 
                         isCustom: false,
-                        ledAvailable: null
+                        ledAvailable: false
                     },
                     { 
                         name: "Quatro Unidades", 
                         dimensions: "9,5 x 9 x 1 cm",
                         price: 40.9, 
                         isCustom: false,
-                        ledAvailable: null
+                        ledAvailable: false
                     },
                     { 
                         name: "Seis Unidades", 
                         dimensions: "9,5 x 9 x 1 cm", 
                         price: 59.9, 
                         isCustom: false,
-                        ledAvailable: null
+                        ledAvailable: false
                     },
                     { 
                         name: "Personalizado", 
@@ -2338,7 +2357,6 @@
                     notaLED: "LED não disponível"
                 },
             },
-
             {
               id:15,
                 name: "Suporte para Sacos de Lixo",
@@ -2353,7 +2371,7 @@
                     { name: "Branco", hex: "#FFFFFF", priceMultiplier: 1, isCustom: false },
                     { name: "Vermelho", hex: "#FF0000", priceMultiplier: 1, isCustom: false },
                     { name: "Verde", hex: "#00FF00", priceMultiplier: 1, isCustom: false },
-                    { name: "Dourado", hex: "#FFD700", priceMultiplier: 1.2, isCustom: false },
+                    { name: "Dourado", hex: "#DOURADO", priceMultiplier: 1.2, isCustom: false},
                     { name: "Personalizada", hex: "#FF6B35", priceMultiplier: null, isCustom: true }
                 ],
                 sizes: [
@@ -2362,21 +2380,21 @@
                         dimensions: "5 x 5 x 12 cm", 
                         price: 25.9, 
                         isCustom: false,
-                        ledAvailable: null
+                        ledAvailable: false
                     },
                     { 
                         name: "Médio", 
                         dimensions: "6,5 x 6,5 x 16 cm", 
                         price: 36.9, 
                         isCustom: false,
-                        ledAvailable: null
+                        ledAvailable: false
                     },
                     { 
                         name: "Grande", 
                         dimensions: "7,5 x 7,5 x 18,5 cm", 
                         price: 47.9, 
                         isCustom: false,
-                        ledAvailable: null
+                        ledAvailable: false
                     },
                     { 
                         name: "Personalizado", 
@@ -2398,7 +2416,6 @@
                     notaLED: "LED não disponível"
                 },
             },
-
             {
               id:16,
                 name: "Suporte para Garrafa de Vinho",
@@ -2413,7 +2430,7 @@
                     { name: "Branco", hex: "#FFFFFF", priceMultiplier: 1, isCustom: false },
                     { name: "Vermelho", hex: "#FF0000", priceMultiplier: 1, isCustom: false },
                     { name: "Verde", hex: "#00FF00", priceMultiplier: 1, isCustom: false },
-                    { name: "Dourado", hex: "#FFD700", priceMultiplier: 1.2, isCustom: false },
+                    { name: "Dourado", hex: "#DOURADO", priceMultiplier: 1.2, isCustom: false},
                     { name: "Personalizada", hex: "#FF6B35", priceMultiplier: null, isCustom: true }
                 ],
                 sizes: [
@@ -2422,7 +2439,7 @@
                         dimensions: "15 x 18 x 6,5 cm", 
                         price: 25.9, 
                         isCustom: false,
-                        ledAvailable: null
+                        ledAvailable: false
                     },
                     { 
                         name: "Personalizado", 
@@ -2444,7 +2461,6 @@
                     notaLED: "LED não disponível"
                 },
             },
-
             {
               id:17,
                 name: "Letreiro \"Ele Vive\"",
@@ -2459,7 +2475,7 @@
                     { name: "Branco", hex: "#FFFFFF", priceMultiplier: 1, isCustom: false },
                     { name: "Vermelho", hex: "#FF0000", priceMultiplier: 1, isCustom: false },
                     { name: "Verde", hex: "#00FF00", priceMultiplier: 1, isCustom: false },
-                    { name: "Dourado", hex: "#FFD700", priceMultiplier: 1.2, isCustom: false },
+                    { name: "Dourado", hex: "#DOURADO", priceMultiplier: 1.2, isCustom: false},
                     { name: "Personalizada", hex: "#FF6B35", priceMultiplier: null, isCustom: true }
                 ],
                 sizes: [
@@ -2468,21 +2484,21 @@
                         dimensions: "12 x 4 x 3 cm", 
                         price: 26.9, 
                         isCustom: false,
-                        ledAvailable: null
+                        ledAvailable: false
                     },
                     { 
                         name: "Médio", 
                         dimensions: "15 x 5 x 4 cm", 
                         price: 36.9, 
                         isCustom: false,
-                        ledAvailable: null
+                        ledAvailable: false
                     },
                     { 
                         name: "Grande", 
                         dimensions: "20 x 7 x 6 cm", 
                         price: 46.9, 
                         isCustom: false,
-                        ledAvailable: null
+                        ledAvailable: false
                     },
                     { 
                         name: "Personalizado", 
@@ -2504,7 +2520,6 @@
                     notaLED: "LED não disponível"
                 },
             },
-
             {
               id:18,
                 name: "Letreiro \"Jesus Te Ama\"",
@@ -2519,7 +2534,7 @@
                     { name: "Branco", hex: "#FFFFFF", priceMultiplier: 1, isCustom: false },
                     { name: "Vermelho", hex: "#FF0000", priceMultiplier: 1, isCustom: false },
                     { name: "Verde", hex: "#00FF00", priceMultiplier: 1, isCustom: false },
-                    { name: "Dourado", hex: "#FFD700", priceMultiplier: 1.2, isCustom: false },
+                    { name: "Dourado", hex: "#DOURADO", priceMultiplier: 1.2, isCustom: false},
                     { name: "Personalizada", hex: "#FF6B35", priceMultiplier: null, isCustom: true }
                 ],
                 sizes: [
@@ -2528,21 +2543,21 @@
                         dimensions: "12 x 4 x 3 cm", 
                         price: 26.9, 
                         isCustom: false,
-                        ledAvailable: null
+                        ledAvailable: false
                     },
                     { 
                         name: "Médio", 
                         dimensions: "15 x 5 x 4 cm", 
                         price: 36.9, 
                         isCustom: false,
-                        ledAvailable: null
+                        ledAvailable: false
                     },
                     { 
                         name: "Grande", 
                         dimensions: "20 x 7 x 6 cm", 
                         price: 46.9, 
                         isCustom: false,
-                        ledAvailable: null
+                        ledAvailable: false
                     },
                     { 
                         name: "Personalizado", 
@@ -2555,7 +2570,7 @@
                 ledOptions: [
                     { name: "Sem LED", price: 0 },
                 ],
-                categories: ["Organização", "Decoração"],
+                categories: ["Decoração"],
                 specifications: {
                     material: "ABS premium",
                     peso: "Varia por tamanho",
@@ -2564,7 +2579,6 @@
                     notaLED: "LED não disponível"
                 },
             },
-
             {
               id:19,
                 name: "Letreiro \"Ore e Confie\"",
@@ -2579,7 +2593,7 @@
                     { name: "Branco", hex: "#FFFFFF", priceMultiplier: 1, isCustom: false },
                     { name: "Vermelho", hex: "#FF0000", priceMultiplier: 1, isCustom: false },
                     { name: "Verde", hex: "#00FF00", priceMultiplier: 1, isCustom: false },
-                    { name: "Dourado", hex: "#FFD700", priceMultiplier: 1.2, isCustom: false },
+                    { name: "Dourado", hex: "#DOURADO", priceMultiplier: 1.2, isCustom: false},
                     { name: "Personalizada", hex: "#FF6B35", priceMultiplier: null, isCustom: true }
                 ],
                 sizes: [
@@ -2588,21 +2602,21 @@
                         dimensions: "12 x 4 x 3 cm", 
                         price: 26.9, 
                         isCustom: false,
-                        ledAvailable: null
+                        ledAvailable: false
                     },
                     { 
                         name: "Médio", 
                         dimensions: "15 x 5 x 4 cm", 
                         price: 36.9, 
                         isCustom: false,
-                        ledAvailable: null
+                        ledAvailable: false
                     },
                     { 
                         name: "Grande", 
                         dimensions: "20 x 7 x 6 cm", 
                         price: 46.9, 
                         isCustom: false,
-                        ledAvailable: null
+                        ledAvailable: false
                     },
                     { 
                         name: "Personalizado", 
@@ -2615,7 +2629,7 @@
                 ledOptions: [
                     { name: "Sem LED", price: 0 },
                 ],
-                categories: ["Organização", "Decoração"],
+                categories: ["Decoração"],
                 specifications: {
                     material: "ABS premium",
                     peso: "Varia por tamanho",
@@ -2624,14 +2638,13 @@
                     notaLED: "LED não disponível"
                 },
             },
-
             {
               id:20,
-                name: "",
-                description: "",
-                basePrice: 36.9,
-                productionTime: "1-2 dias",
-                image: "https://github.com/oliveeira2610/Neolayerd_Catalogo/blob/main/images/ARQUIVOAQUI?raw=true",
+                name: "Suporte Alexa Fitness",
+                description: "Design inspirado no universo fitness, desenvolvido para acomodar a Alexa com apoio seguro, estabilidade e um visual moderno.",
+                basePrice: 65.9,
+                productionTime: "2-3 dias",
+                image: "https://github.com/oliveeira2610/Neolayerd_Catalogo/blob/main/images/SuporteAlexaFitness.jpg?raw=true",
                 colors: [
                     { name: "Azul", hex: "#0052cc", priceMultiplier: 1, isCustom: false },
                     { name: "Preto", hex: "#000000", priceMultiplier: 1, isCustom: false },
@@ -2639,30 +2652,30 @@
                     { name: "Branco", hex: "#FFFFFF", priceMultiplier: 1, isCustom: false },
                     { name: "Vermelho", hex: "#FF0000", priceMultiplier: 1, isCustom: false },
                     { name: "Verde", hex: "#00FF00", priceMultiplier: 1, isCustom: false },
-                    { name: "Dourado", hex: "#FFD700", priceMultiplier: 1.2, isCustom: false },
+                    { name: "Dourado", hex: "#DOURADO", priceMultiplier: 1.2, isCustom: false},
                     { name: "Personalizada", hex: "#FF6B35", priceMultiplier: null, isCustom: true }
                 ],
                 sizes: [
                   { 
-                        name: "Pequeno", 
+                        name: "echo pop", 
                         dimensions: "21 x 10 x 13 cm", 
-                        price: 36.9, 
+                        price: 65.9, 
                         isCustom: false,
-                        ledAvailable: null
+                        ledAvailable: false
                     },
                     { 
-                        name: "Médio", 
+                        name: "echo dot", 
                         dimensions: "21 x 10 x 13 cm", 
-                        price: 36.9, 
+                        price: 65.9, 
                         isCustom: false,
-                        ledAvailable: null
+                        ledAvailable: false
                     },
                     { 
                         name: "Grande", 
                         dimensions: "26 x 12 x 16 cm", 
-                        price: 44.9, 
+                        price: 65.9, 
                         isCustom: false,
-                        ledAvailable: null
+                        ledAvailable: false
                     },
                     { 
                         name: "Personalizado", 
@@ -2689,9 +2702,9 @@
               id:21,
                 name: "",
                 description: "",
-                basePrice: 36.9,
-                productionTime: "1-2 dias",
-                image: "https://github.com/oliveeira2610/Neolayerd_Catalogo/blob/main/images/ARQUIVOAQUI?raw=true",
+                basePrice: .9,
+                productionTime: " dias",
+                image: "https://github.com/oliveeira2610/Neolayerd_Catalogo/blob/main/images/IMAGEMAQUI?raw=true",
                 colors: [
                     { name: "Azul", hex: "#0052cc", priceMultiplier: 1, isCustom: false },
                     { name: "Preto", hex: "#000000", priceMultiplier: 1, isCustom: false },
@@ -2699,30 +2712,30 @@
                     { name: "Branco", hex: "#FFFFFF", priceMultiplier: 1, isCustom: false },
                     { name: "Vermelho", hex: "#FF0000", priceMultiplier: 1, isCustom: false },
                     { name: "Verde", hex: "#00FF00", priceMultiplier: 1, isCustom: false },
-                    { name: "Dourado", hex: "#FFD700", priceMultiplier: 1.2, isCustom: false },
+                    { name: "Dourado", hex: "#DOURADO", priceMultiplier: 1.2, isCustom: false},
                     { name: "Personalizada", hex: "#FF6B35", priceMultiplier: null, isCustom: true }
                 ],
                 sizes: [
                   { 
                         name: "Pequeno", 
                         dimensions: "21 x 10 x 13 cm", 
-                        price: 36.9, 
+                        price: 65.9, 
                         isCustom: false,
-                        ledAvailable: null
+                        ledAvailable: false
                     },
                     { 
                         name: "Médio", 
                         dimensions: "21 x 10 x 13 cm", 
-                        price: 36.9, 
+                        price: 65.9, 
                         isCustom: false,
-                        ledAvailable: null
+                        ledAvailable: false
                     },
                     { 
                         name: "Grande", 
                         dimensions: "26 x 12 x 16 cm", 
-                        price: 44.9, 
+                        price: 65.9, 
                         isCustom: false,
-                        ledAvailable: null
+                        ledAvailable: false
                     },
                     { 
                         name: "Personalizado", 
@@ -2744,10 +2757,66 @@
                     notaLED: "LED não disponível"
                 },
             },
-            
 
-            
-            
+            {
+              id:21,
+                name: "",
+                description: "",
+                basePrice: .9,
+                productionTime: " dias",
+                image: "https://github.com/oliveeira2610/Neolayerd_Catalogo/blob/main/images/IMAGEMAQUI?raw=true",
+                colors: [
+                    { name: "Azul", hex: "#0052cc", priceMultiplier: 1, isCustom: false },
+                    { name: "Preto", hex: "#000000", priceMultiplier: 1, isCustom: false },
+                    { name: "Cinza", hex: "#808080", priceMultiplier: 1, isCustom: false },
+                    { name: "Branco", hex: "#FFFFFF", priceMultiplier: 1, isCustom: false },
+                    { name: "Vermelho", hex: "#FF0000", priceMultiplier: 1, isCustom: false },
+                    { name: "Verde", hex: "#00FF00", priceMultiplier: 1, isCustom: false },
+                    { name: "Dourado", hex: "#DOURADO", priceMultiplier: 1.2, isCustom: false},
+                    { name: "Personalizada", hex: "#FF6B35", priceMultiplier: null, isCustom: true }
+                ],
+                sizes: [
+                  { 
+                        name: "Pequeno", 
+                        dimensions: "21 x 10 x 13 cm", 
+                        price: 65.9, 
+                        isCustom: false,
+                        ledAvailable: false
+                    },
+                    { 
+                        name: "Médio", 
+                        dimensions: "21 x 10 x 13 cm", 
+                        price: 65.9, 
+                        isCustom: false,
+                        ledAvailable: false
+                    },
+                    { 
+                        name: "Grande", 
+                        dimensions: "26 x 12 x 16 cm", 
+                        price: 65.9, 
+                        isCustom: false,
+                        ledAvailable: false
+                    },
+                    { 
+                        name: "Personalizado", 
+                        dimensions: "Medidas e quantidades personalizados", 
+                        price: null, 
+                        isCustom: true,
+                        ledAvailable: null
+                    }
+                ],
+                ledOptions: [
+                    { name: "Sem LED", price: 0 },
+                ],
+                categories: ["Organização", "Decoração"],
+                specifications: {
+                    material: "ABS premium",
+                    peso: "Varia por tamanho",
+                    acabamento: "Lisa e brilhante",
+                    tipoLED: "Não disponível para este produto",
+                    notaLED: "LED não disponível"
+                },
+            },
         ];
 
         let selectedCategory = null;
@@ -2759,29 +2828,32 @@
         let isAccordionOpen = false;
 
         function init() {
-            renderProducts();
+            renderProductsByCategory();
             renderCategories();
-            updateResultsCount();
             
             const desktopSearch = document.getElementById('searchBox');
             const mobileSearch = document.getElementById('mobileSearchBox');
             
-            desktopSearch.addEventListener('input', function() {
-                mobileSearch.value = this.value;
-                filterProducts();
-            });
+            if (desktopSearch) {
+                desktopSearch.addEventListener('input', function() {
+                    if (mobileSearch) mobileSearch.value = this.value;
+                    filterProducts();
+                });
+            }
             
-            mobileSearch.addEventListener('input', function() {
-                desktopSearch.value = this.value;
-                filterProducts();
-            });
+            if (mobileSearch) {
+                mobileSearch.addEventListener('input', function() {
+                    if (desktopSearch) desktopSearch.value = this.value;
+                    filterProducts();
+                });
+            }
         }
 
-        function renderProducts() {
-            const grid = document.getElementById("productsGrid");
+        function renderProductsByCategory() {
+            const container = document.getElementById("productsContainer");
             const noProducts = document.getElementById("noProducts");
-            const searchQuery = document.getElementById("searchBox").value.toLowerCase().trim();
-
+            const searchQuery = document.getElementById("searchBox")?.value.toLowerCase().trim() || "";
+            
             const filtered = PRODUCTS.filter((product) => {
                 const matchesCategory = !selectedCategory || product.categories.includes(selectedCategory);
                 const matchesSearch = !searchQuery ||
@@ -2792,16 +2864,68 @@
             });
 
             if (filtered.length === 0) {
-                grid.innerHTML = "";
-                noProducts.style.display = "block";
+                if (container) container.innerHTML = "";
+                if (noProducts) noProducts.style.display = "block";
                 updateResultsCount(0);
                 return;
             }
 
-            noProducts.style.display = "none";
+            if (noProducts) noProducts.style.display = "none";
             updateResultsCount(filtered.length);
 
-            grid.innerHTML = filtered.map((product) => `
+            if (selectedCategory) {
+                renderSingleCategory(container, filtered, selectedCategory);
+            } else {
+                renderAllCategories(container, filtered);
+            }
+        }
+
+        function renderSingleCategory(container, products, category) {
+            container.innerHTML = `
+                <div class="category-group">
+                    <div class="category-header">
+                        <h3>${category}</h3>
+                    </div>
+                    <div class="products-grid">
+                        ${products.map(product => renderProductCard(product)).join('')}
+                    </div>
+                </div>
+            `;
+        }
+
+        function renderAllCategories(container, products) {
+            const categories = {};
+            products.forEach(product => {
+                product.categories.forEach(cat => {
+                    if (!categories[cat]) categories[cat] = [];
+                    categories[cat].push(product);
+                });
+            });
+
+            let html = '';
+            for (const [category, categoryProducts] of Object.entries(categories)) {
+                html += `
+                    <div class="category-group">
+                        <div class="category-header">
+                            <h3>${category}</h3>
+                            <a href="#" class="view-all" onclick="selectCategory('${category}'); return false;">
+                                Ver todos (${categoryProducts.length})
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M5 12h14M12 5l7 7-7 7"/>
+                                </svg>
+                            </a>
+                        </div>
+                        <div class="products-grid">
+                            ${categoryProducts.slice(0, 4).map(product => renderProductCard(product)).join('')}
+                        </div>
+                    </div>
+                `;
+            }
+            container.innerHTML = html;
+        }
+
+        function renderProductCard(product) {
+            return `
                 <div class="product-card" onclick="openModal(${product.id})">
                     <img src="${product.image}" alt="${product.name}" class="product-image" loading="lazy">
                     <div class="product-content">
@@ -2838,7 +2962,11 @@
                         </div>
                     </div>
                 </div>
-            `).join("");
+            `;
+        }
+
+        function renderProducts() {
+            renderProductsByCategory();
         }
 
         function renderCategories() {
@@ -2854,26 +2982,30 @@
             const container = document.getElementById("categoryButtons");
             const footer = document.getElementById("footerCategories");
 
-            container.innerHTML = `
-                <button class="category-tag ${!selectedCategory ? "active" : ""}" onclick="selectCategory(null)">
-                    <span>Todos</span>
-                    <span class="count">(${PRODUCTS.length})</span>
-                </button>
-                ${allCategories.map((cat) => {
-                    const count = PRODUCTS.filter((p) => p.categories.includes(cat)).length;
-                    return `<button class="category-tag ${selectedCategory === cat ? "active" : ""}" onclick="selectCategory('${cat}')">
-                        <span>${cat}</span>
-                        <span class="count">(${count})</span>
-                    </button>`;
-                }).join("")}
-            `;
+            if (container) {
+                container.innerHTML = `
+                    <button class="category-tag ${!selectedCategory ? "active" : ""}" onclick="selectCategory(null)">
+                        <span>Todos</span>
+                        <span class="count">(${PRODUCTS.length})</span>
+                    </button>
+                    ${allCategories.map((cat) => {
+                        const count = PRODUCTS.filter((p) => p.categories.includes(cat)).length;
+                        return `<button class="category-tag ${selectedCategory === cat ? "active" : ""}" onclick="selectCategory('${cat}')">
+                            <span>${cat}</span>
+                            <span class="count">(${count})</span>
+                        </button>`;
+                    }).join("")}
+                `;
+            }
 
-            footer.innerHTML = `
-                <li><a href="#" onclick="selectCategory(null); return false;">Todos os Produtos</a></li>
-                ${allCategories.map((cat) => `
-                    <li><a href="#" onclick="selectCategory('${cat}'); return false;">${cat}</a></li>
-                `).join("")}
-            `;
+            if (footer) {
+                footer.innerHTML = `
+                    <li><a href="#" onclick="selectCategory(null); return false;">Todos os Produtos</a></li>
+                    ${allCategories.map((cat) => `
+                        <li><a href="#" onclick="selectCategory('${cat}'); return false;">${cat}</a></li>
+                    `).join("")}
+                `;
+            }
         }
 
         function selectCategory(category) {
@@ -2883,63 +3015,68 @@
                 btn.classList.remove("active");
             });
             
-            const allBtn = document.querySelector(".category-tag:first-child");
-            const targetBtn = Array.from(document.querySelectorAll(".category-tag")).find(btn => 
-                btn.textContent.includes(category || "Todos")
-            );
+            const targetBtn = Array.from(document.querySelectorAll(".category-tag")).find(btn => {
+                if (!category) {
+                    return btn.textContent.includes("Todos");
+                }
+                return btn.textContent.includes(category) && !btn.textContent.includes("Todos");
+            });
             
             if (targetBtn) {
                 targetBtn.classList.add("active");
-            } else if (!category && allBtn) {
-                allBtn.classList.add("active");
             }
             
-            renderProducts();
+            renderProductsByCategory();
         }
 
         function filterProducts() {
-            const searchValue = document.getElementById('searchBox').value;
+            const searchBox = document.getElementById('searchBox');
+            const mobileSearchBox = document.getElementById('mobileSearchBox');
+            const searchValue = searchBox?.value || mobileSearchBox?.value || '';
+            
             const clearBtns = document.querySelectorAll('.search-clear');
+            clearBtns.forEach(btn => {
+                if (btn) btn.style.display = searchValue.trim() !== '' ? 'flex' : 'none';
+            });
             
-            if (searchValue.trim() !== '') {
-                clearBtns.forEach(btn => btn.style.display = 'flex');
-            } else {
-                clearBtns.forEach(btn => btn.style.display = 'none');
-            }
-            
-            renderProducts();
+            renderProductsByCategory();
         }
 
         function toggleSearch() {
             const searchContainer = document.getElementById('headerSearch');
             isSearchOpen = !isSearchOpen;
             
-            if (isSearchOpen) {
-                searchContainer.classList.add('active');
-                document.getElementById('mobileSearchBox').focus();
-            } else {
-                searchContainer.classList.remove('active');
+            if (searchContainer) {
+                if (isSearchOpen) {
+                    searchContainer.classList.add('active');
+                    const mobileSearch = document.getElementById('mobileSearchBox');
+                    if (mobileSearch) mobileSearch.focus();
+                } else {
+                    searchContainer.classList.remove('active');
+                }
             }
         }
 
         function clearSearch() {
-            document.getElementById('searchBox').value = '';
-            document.getElementById('mobileSearchBox').value = '';
+            const searchBox = document.getElementById('searchBox');
+            const mobileSearchBox = document.getElementById('mobileSearchBox');
+            if (searchBox) searchBox.value = '';
+            if (mobileSearchBox) mobileSearchBox.value = '';
             filterProducts();
         }
 
         function clearMobileSearch() {
-            document.getElementById('mobileSearchBox').value = '';
-            document.getElementById('searchBox').value = '';
-            filterProducts();
+            clearSearch();
         }
 
         function resetFilters() {
             selectedCategory = null;
-            document.getElementById("searchBox").value = '';
-            document.getElementById("mobileSearchBox").value = '';
+            const searchBox = document.getElementById('searchBox');
+            const mobileSearchBox = document.getElementById('mobileSearchBox');
+            if (searchBox) searchBox.value = '';
+            if (mobileSearchBox) mobileSearchBox.value = '';
             renderCategories();
-            renderProducts();
+            renderProductsByCategory();
             
             if (isSearchOpen) {
                 toggleSearch();
@@ -2948,6 +3085,8 @@
 
         function updateResultsCount(count) {
             const element = document.getElementById("resultsCount");
+            if (!element) return;
+            
             if (count === 0) {
                 element.textContent = "Nenhum produto encontrado";
             } else if (count) {
@@ -2962,36 +3101,47 @@
             if (!product) return;
 
             currentModalProduct = product;
-            selectedSize = null;
-            selectedColor = null;
-            selectedLed = null;
-
-            // Reset selections - seleciona tamanho médio por padrão
-            selectedSize = product.sizes.find(s => s.name === "Médio") || product.sizes[0];
+            
+            const medSize = product.sizes.find(s => s.name === "Médio" && !s.isCustom);
+            selectedSize = medSize || product.sizes.find(s => !s.isCustom) || product.sizes[0];
+            
             selectedColor = product.colors.find(c => c.name === "Branco") || product.colors[0];
-            selectedLed = product.ledOptions[0]; // Seleciona primeira opção de LED
+            selectedLed = product.ledOptions[0];
 
-            // Atualizar informações básicas
-            document.getElementById("modalTitle").textContent = product.name;
-            document.getElementById("modalImage").src = product.image;
-            document.getElementById("modalDescription").textContent = product.description;
+            const modalTitle = document.getElementById("modalTitle");
+            const modalImage = document.getElementById("modalImage");
+            const modalDescription = document.getElementById("modalDescription");
+            
+            if (modalTitle) modalTitle.textContent = product.name;
+            if (modalImage) modalImage.src = product.image;
+            if (modalDescription) modalDescription.textContent = product.description;
 
-            // Renderizar tamanhos
+            renderSizeOptions(product);
+            renderColorOptions(product);
+            renderLedOptions(product);
+            renderSpecifications(product);
+
+            updatePrice();
+            updateCustomNotices();
+
+            closeAccordion();
+
+            const modal = document.getElementById("productModal");
+            if (modal) {
+                modal.classList.add("active");
+                document.body.style.overflow = "hidden";
+            }
+        }
+
+        function renderSizeOptions(product) {
             const sizeOptions = document.getElementById("sizeOptions");
+            if (!sizeOptions) return;
+            
             sizeOptions.innerHTML = product.sizes.map((size, index) => {
                 const isSelected = selectedSize && selectedSize.name === size.name;
-                let ledIndicator = '';
-                
-                // Adicionar indicador visual para tamanhos que aceitam LED
-                if (size.ledAvailable === true) {
-                    ledIndicator = `<div class="size-led-indicator" title="Aceita LED">💡</div>`;
-                } else if (size.ledAvailable === false) {
-                    ledIndicator = `<div class="size-led-indicator no-led" title="Não aceita LED">🚫</div>`;
-                }
-                
                 return `
                     <div class="size-option ${isSelected ? 'selected' : ''}" onclick="selectSize(${index})">
-                        <div class="size-name">${size.name} ${ledIndicator}</div>
+                        <div class="size-name">${size.name}</div>
                         <div class="size-dimensions">${size.dimensions}</div>
                         ${size.price ? 
                             `<div class="size-price">R$ ${size.price.toFixed(2).replace(".", ",")}</div>` :
@@ -3000,33 +3150,82 @@
                     </div>
                 `;
             }).join("");
+        }
 
-            // Renderizar cores
+        function renderColorOptions(product) {
             const colorOptions = document.getElementById("colorOptions");
+            if (!colorOptions) return;
+            
             colorOptions.innerHTML = product.colors.map((color, index) => {
                 const isSelected = selectedColor && selectedColor.name === color.name;
+                const bgStyle = color.gradient ? color.hex : `background-color: ${color.hex}`;
                 return `
                     <div class="color-option ${isSelected ? 'selected' : ''}" onclick="selectColor(${index})">
-                        <div class="color-circle" style="background-color: ${color.hex}; border-color: ${color.hex === '#FFFFFF' ? '#e2e8f0' : color.hex}"></div>
+                        <div class="color-circle" style="${bgStyle}; border-color: ${color.hex === '#FFFFFF' ? '#e2e8f0' : color.hex}"></div>
                         <div class="color-name">${color.name}</div>
                     </div>
                 `;
             }).join("");
+        }
 
-            // Renderizar opções de LED (inicialmente com base no tamanho selecionado)
-            updateLedOptions();
+        function renderLedOptions(product) {
+            const ledOptionsContainer = document.getElementById("ledOptions");
+            const ledSelector = document.getElementById("ledSelector");
+            
+            if (!ledOptionsContainer || !ledSelector) return;
+            
+            const hasLedAvailable = selectedSize && selectedSize.ledAvailable === true;
+            
+            if (!hasLedAvailable) {
+                const semLedOption = product.ledOptions.find(opt => opt.name === "Sem LED");
+                if (semLedOption) {
+                    ledOptionsContainer.innerHTML = `
+                        <div class="led-option selected" onclick="selectLed(0)">
+                            <div class="led-name">${semLedOption.name}</div>
+                            <div class="led-price" style="color: var(--secondary);">Incluído</div>
+                        </div>
+                    `;
+                    selectedLed = semLedOption;
+                } else {
+                    ledSelector.style.display = 'none';
+                }
+            } else {
+                ledSelector.style.display = 'block';
+                ledOptionsContainer.innerHTML = product.ledOptions.map((led, index) => {
+                    const isSelected = selectedLed && selectedLed.name === led.name;
+                    return `
+                        <div class="led-option ${isSelected ? 'selected' : ''}" onclick="selectLed(${index})">
+                            <div class="led-name">${led.name}</div>
+                            ${led.price > 0 ? 
+                                `<div class="led-price">+ R$ ${led.price.toFixed(2).replace(".", ",")}</div>` :
+                                `<div class="led-price" style="color: var(--secondary);">Incluído</div>`
+                            }
+                        </div>
+                    `;
+                }).join("");
+                
+                if (!selectedLed || !product.ledOptions.includes(selectedLed)) {
+                    selectedLed = product.ledOptions[0];
+                    const firstOption = document.querySelector('.led-option');
+                    if (firstOption) firstOption.classList.add('selected');
+                }
+            }
+        }
 
-            // Renderizar especificações
+        function renderSpecifications(product) {
             const specsGrid = document.getElementById("specsGrid");
+            if (!specsGrid) return;
+            
             const specEntries = Object.entries(product.specifications);
+            const labels = {
+                material: 'Material',
+                peso: 'Peso',
+                acabamento: 'Acabamento',
+                tipoLED: 'Tipo de LED',
+                notaLED: 'Nota sobre LED'
+            };
+            
             specsGrid.innerHTML = specEntries.map(([key, value]) => {
-                const labels = {
-                    material: 'Material',
-                    peso: 'Peso',
-                    acabamento: 'Acabamento',
-                    tipoLED: 'Tipo de LED',
-                    notaLED: 'Nota sobre LED'
-                };
                 return `
                     <div class="spec-item">
                         <div class="spec-label">
@@ -3040,137 +3239,61 @@
                     </div>
                 `;
             }).join('');
-
-            // Atualizar preço inicial e mostrar/ocultar avisos
-            updatePrice();
-            updateCustomNotices();
-
-            // Fechar accordion por padrão
-            closeAccordion();
-
-            // Abrir modal
-            const modal = document.getElementById("productModal");
-            modal.classList.add("active");
-            document.body.style.overflow = "hidden";
         }
 
         function selectSize(index) {
             if (!currentModalProduct) return;
             
-            // Remover seleção anterior
             document.querySelectorAll('.size-option').forEach(option => {
                 option.classList.remove('selected');
             });
             
-            // Selecionar novo tamanho
             const options = document.querySelectorAll('.size-option');
-            options[index].classList.add('selected');
-            selectedSize = currentModalProduct.sizes[index];
-            
-            // Atualizar opções de LED com base no novo tamanho
-            updateLedOptions();
-            
-            // Atualizar preço e avisos
-            updatePrice();
-            updateCustomNotices();
-        }
-
-        function updateLedOptions() {
-            if (!currentModalProduct || !selectedSize) return;
-            
-            const ledOptionsContainer = document.getElementById("ledOptions");
-            const ledSelector = document.getElementById("ledSelector");
-            
-            // Verificar se o tamanho selecionado aceita LED
-            const hasLedAvailable = selectedSize.ledAvailable === true;
-            
-            if (!hasLedAvailable) {
-                // Se não aceita LED, mostrar apenas "Sem LED" se existir
-                const semLedOption = currentModalProduct.ledOptions.find(opt => opt.name === "Sem LED");
+            if (options[index]) {
+                options[index].classList.add('selected');
+                selectedSize = currentModalProduct.sizes[index];
                 
-                if (semLedOption) {
-                    ledOptionsContainer.innerHTML = `
-                        <div class="led-option selected" onclick="selectLed(0)">
-                            <div class="led-name">${semLedOption.name}</div>
-                            <div class="led-price" style="color: var(--secondary);">Incluído</div>
-                        </div>
-                    `;
-                    selectedLed = semLedOption;
-                    
-                    
-                } else {
-                    // Se não tem opção "Sem LED", esconder a seção inteira
-                    ledSelector.style.display = 'none';
-                }
-            } else {
-                // Se aceita LED, mostrar todas as opções
-                ledSelector.style.display = 'block';
-                ledOptionsContainer.innerHTML = currentModalProduct.ledOptions.map((led, index) => {
-                    const isSelected = selectedLed && selectedLed.name === led.name;
-                    return `
-                        <div class="led-option ${isSelected ? 'selected' : ''}" onclick="selectLed(${index})">
-                            <div class="led-name">${led.name}</div>
-                            ${led.price > 0 ? 
-                                `<div class="led-price">+ R$ ${led.price.toFixed(2).replace(".", ",")}</div>` :
-                                `<div class="led-price" style="color: var(--secondary);">Incluído</div>`
-                            }
-                        </div>
-                    `;
-                }).join("");
-                
-                // Selecionar a primeira opção se nenhuma estiver selecionada
-                if (!selectedLed || !currentModalProduct.ledOptions.includes(selectedLed)) {
-                    selectedLed = currentModalProduct.ledOptions[0];
-                    const firstOption = document.querySelector('.led-option');
-                    if (firstOption) firstOption.classList.add('selected');
-                }
+                renderLedOptions(currentModalProduct);
+                updatePrice();
+                updateCustomNotices();
             }
-            
-            // Atualizar preço após mudar as opções de LED
-            updatePrice();
         }
 
         function selectColor(index) {
             if (!currentModalProduct) return;
             
-            // Remover seleção anterior
             document.querySelectorAll('.color-option').forEach(option => {
                 option.classList.remove('selected');
             });
             
-            // Selecionar nova cor
             const options = document.querySelectorAll('.color-option');
-            options[index].classList.add('selected');
-            selectedColor = currentModalProduct.colors[index];
-            
-            // Atualizar preço e avisos
-            updatePrice();
-            updateCustomNotices();
+            if (options[index]) {
+                options[index].classList.add('selected');
+                selectedColor = currentModalProduct.colors[index];
+                
+                updatePrice();
+                updateCustomNotices();
+            }
         }
 
         function selectLed(index) {
             if (!currentModalProduct || !selectedSize) return;
             
-            // Verificar se o tamanho atual aceita LED
             if (selectedSize.ledAvailable === false) {
-                // Não permite selecionar LED se o tamanho não aceitar
-                alert(`O tamanho ${selectedSize.name} não aceita LED. Selecione um tamanho maior.`);
+                alert(`O tamanho ${selectedSize.name} não aceita LED.`);
                 return;
             }
             
-            // Remover seleção anterior
             document.querySelectorAll('.led-option').forEach(option => {
                 option.classList.remove('selected');
             });
             
-            // Selecionar novo LED
             const options = document.querySelectorAll('.led-option');
             if (options[index]) {
                 options[index].classList.add('selected');
                 selectedLed = currentModalProduct.ledOptions[index];
             }
             
-            // Atualizar preço
             updatePrice();
         }
 
@@ -3178,18 +3301,12 @@
             const customSizeNotice = document.getElementById('customSizeNotice');
             const customColorNotice = document.getElementById('customColorNotice');
             
-            // Mostrar/ocultar aviso de tamanho personalizado
-            if (selectedSize && selectedSize.isCustom) {
-                customSizeNotice.style.display = 'block';
-            } else {
-                customSizeNotice.style.display = 'none';
+            if (customSizeNotice) {
+                customSizeNotice.style.display = selectedSize && selectedSize.isCustom ? 'block' : 'none';
             }
             
-            // Mostrar/ocultar aviso de cor personalizada
-            if (selectedColor && selectedColor.isCustom) {
-                customColorNotice.style.display = 'block';
-            } else {
-                customColorNotice.style.display = 'none';
+            if (customColorNotice) {
+                customColorNotice.style.display = selectedColor && selectedColor.isCustom ? 'block' : 'none';
             }
         }
 
@@ -3199,7 +3316,8 @@
             const finalPrice = document.getElementById('finalPrice');
             const priceBreakdown = document.getElementById('priceBreakdown');
             
-            // Verificar se algum item é personalizado
+            if (!finalPrice || !priceBreakdown) return;
+            
             const hasCustomSize = selectedSize && selectedSize.isCustom;
             const hasCustomColor = selectedColor && selectedColor.isCustom;
             
@@ -3226,7 +3344,6 @@
                     breakdown += `<br>Cor ${selectedColor.name}: ×${selectedColor.priceMultiplier}`;
                 }
                 
-                // Adicionar LED ao preço
                 if (selectedLed.price > 0) {
                     price += selectedLed.price;
                     breakdown += `<br>${selectedLed.name}: + R$ ${selectedLed.price.toFixed(2).replace(".", ",")}`;
@@ -3244,12 +3361,12 @@
             const accordionIcon = document.querySelector('.accordion-icon');
             
             if (isAccordionOpen) {
-                accordionContent.classList.remove('open');
-                accordionIcon.classList.remove('rotated');
+                if (accordionContent) accordionContent.classList.remove('open');
+                if (accordionIcon) accordionIcon.classList.remove('rotated');
                 isAccordionOpen = false;
             } else {
-                accordionContent.classList.add('open');
-                accordionIcon.classList.add('rotated');
+                if (accordionContent) accordionContent.classList.add('open');
+                if (accordionIcon) accordionIcon.classList.add('rotated');
                 isAccordionOpen = true;
             }
         }
@@ -3258,8 +3375,8 @@
             const accordionContent = document.getElementById('accordionContent');
             const accordionIcon = document.querySelector('.accordion-icon');
             
-            accordionContent.classList.remove('open');
-            accordionIcon.classList.remove('rotated');
+            if (accordionContent) accordionContent.classList.remove('open');
+            if (accordionIcon) accordionIcon.classList.remove('rotated');
             isAccordionOpen = false;
         }
 
@@ -3283,7 +3400,6 @@
                 message += `*LED:* ${selectedLed.name}\n`;
             }
             
-            // Adicionar observações para itens personalizados
             const hasCustomSize = selectedSize && selectedSize.isCustom;
             const hasCustomColor = selectedColor && selectedColor.isCustom;
             
@@ -3312,52 +3428,58 @@
             
             message += `\nAguardo seu retorno!`;
             
-            // Número do WhatsApp (altere para o seu número)
-            const phoneNumber = '5514988092731'; // Substitua pelo seu número
+            const phoneNumber = '5514988092731';
             const encodedMessage = encodeURIComponent(message);
             const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
             
-            // Abrir WhatsApp
             window.open(whatsappUrl, '_blank');
         }
 
         function closeModal() {
             const modal = document.getElementById("productModal");
-            modal.classList.remove("active");
-            document.body.style.overflow = "auto";
+            if (modal) {
+                modal.classList.remove("active");
+                document.body.style.overflow = "auto";
+            }
             currentModalProduct = null;
             selectedSize = null;
             selectedColor = null;
             selectedLed = null;
         }
 
-        // Fechar modal ao clicar fora ou pressionar ESC
-        document.getElementById("productModal").addEventListener("click", function (e) {
-            if (e.target === this) {
-                closeModal();
+        // Event listeners
+        document.addEventListener("DOMContentLoaded", function() {
+            const modal = document.getElementById("productModal");
+            if (modal) {
+                modal.addEventListener("click", function (e) {
+                    if (e.target === this) {
+                        closeModal();
+                    }
+                });
             }
-        });
 
-        document.addEventListener("keydown", function (e) {
-            if (e.key === "Escape") {
-                closeModal();
-                if (isSearchOpen) {
+            document.addEventListener("keydown", function (e) {
+                if (e.key === "Escape") {
+                    closeModal();
+                    if (isSearchOpen) {
+                        toggleSearch();
+                    }
+                }
+            });
+
+            document.addEventListener('click', function(e) {
+                const searchContainer = document.getElementById('headerSearch');
+                const searchToggle = document.querySelector('.search-toggle');
+                
+                if (isSearchOpen && 
+                    searchContainer && 
+                    !searchContainer.contains(e.target) && 
+                    searchToggle && 
+                    !searchToggle.contains(e.target) &&
+                    e.target !== searchToggle) {
                     toggleSearch();
                 }
-            }
-        });
-
-        // Fechar busca mobile ao clicar fora
-        document.addEventListener('click', function(e) {
-            const searchContainer = document.getElementById('headerSearch');
-            const searchToggle = document.querySelector('.search-toggle');
-            
-            if (isSearchOpen && 
-                !searchContainer.contains(e.target) && 
-                !searchToggle.contains(e.target) &&
-                e.target !== searchToggle) {
-                toggleSearch();
-            }
+            });
         });
 
         // Inicializar
