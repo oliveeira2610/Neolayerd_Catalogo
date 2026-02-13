@@ -238,6 +238,7 @@
         min-height: 60vh;
         display: flex;
         align-items: center;
+        text-align: center;
         background:
           linear-gradient(135deg, rgba(10, 42, 59, 0.9), rgba(10, 42, 59, 0.7)),
           url("https://github.com/oliveeira2610/Neolayerd_Catalogo/blob/main/images/Bunner.gif?raw=true");
@@ -398,6 +399,7 @@
       }
 
       .product-name {
+        width: 19vh;
         font-size: 1.125rem;
         font-weight: 600;
         color: var(--dark);
@@ -1863,13 +1865,13 @@
           description:
             "Réplica detalhada do motor Honda 160cc em impressão 3D. Design realista com acabamento premium, ideal para decoração temática, colecionadores e entusiastas do automobilismo. Peça exclusiva com alto nível de detalhamento.",
           basePrice: 45.9,
-          productionTime: "3-5 dias",
+          productionTime: "3 dias",
           image:
             "https://github.com/oliveeira2610/Neolayerd_Catalogo/blob/main/images/motorhonda160.jpg?raw=true",
           colors: [
             {
               name: "Preto + Cinza",
-              hex: "#2D2D2D",
+              hex: "#PRETOCINZA",
               priceMultiplier: 1,
               isCustom: false,
             },
@@ -1915,7 +1917,7 @@
             { name: "LED Branco", price: 30.0 },
             { name: "LED RGB", price: 42.0 },
           ],
-          categories: ["Decoração", "Automobilismo", "Colecionável"],
+          categories: ["Decoração", "Automobilismo"],
           specifications: {
             material: "ABS Premium",
             acabamento: "Alta definição / Fosco",
@@ -1925,11 +1927,11 @@
         },
         {
           id: 2,
-          name: "BMW Série M | Relevo de Parede",
+          name: "BMW de Parede",
           description:
             "Painel decorativo inspirado no design BMW Série M. Peça em alto relevo com linhas precisas e acabamento sofisticado. Perfeita para home offices, salas e garagens temáticas.",
           basePrice: 22.9,
-          productionTime: "2-3 dias",
+          productionTime: "3 dias",
           image:
             "https://github.com/oliveeira2610/Neolayerd_Catalogo/blob/main/images/decoracaoparedebmw.jpg?raw=true",
           colors: [
@@ -2013,7 +2015,7 @@
             },
           ],
           ledOptions: [{ name: "Sem LED", price: 0 }],
-          categories: ["Decoração", "Automobilismo", "Arte-parede"],
+          categories: ["Decoração", "Automobilismo" ],
           specifications: {
             material: "ABS Premium",
             acabamento: "Lisa e brilhante",
@@ -2023,11 +2025,11 @@
         },
         {
           id: 3,
-          name: "Porsche 911 GT3 RS | Relevo de Parede",
+          name: "Porsche de Parede",
           description:
             "Releitura artística do Porsche 911 GT3 RS em impressão 3D. Design aerodinâmico em alto relevo, desenvolvido para ambientes sofisticados e apaixonados por carros esportivos.",
           basePrice: 22.9,
-          productionTime: "2-3 dias",
+          productionTime: "3 dias",
           image:
             "https://github.com/oliveeira2610/Neolayerd_Catalogo/blob/main/images/DecoracaodeParedPorsche911GT3RS.png?raw=true",
           colors: [
@@ -2111,7 +2113,7 @@
             },
           ],
           ledOptions: [{ name: "Sem LED", price: 0 }],
-          categories: ["Decoração", "Automobilismo", "Arte-parede"],
+          categories: ["Decoração", "Automobilismo", ],
           specifications: {
             material: "ABS Premium",
             acabamento: "Lisa e brilhante",
@@ -2125,13 +2127,13 @@
           description:
             "Saboneteira autodrenante com design exclusivo de pato. Desenvolvida para banheiros modernos e lúdicos. Acabamento liso e resistente à umidade.",
           basePrice: 29.9,
-          productionTime: "1-2 dias",
+          productionTime: "3 dias",
           image:
             "https://github.com/oliveeira2610/Neolayerd_Catalogo/blob/main/images/saboneteiraPato.jpeg?raw=true",
           colors: [
             {
               name: "Branco + Amarelo",
-              hex: "#F5F5F5",
+              hex: "#BRANCOAMARELO",
               priceMultiplier: 1,
               isCustom: false,
             },
@@ -2166,7 +2168,7 @@
             },
           ],
           ledOptions: [{ name: "Sem LED", price: 0 }],
-          categories: ["Banheiro", "Organização", "Decoração"],
+          categories: ["Banheiro", "Cozinha"],
           specifications: {
             material: "ABS Premium",
             acabamento: "Alta definição / Resistente à água",
@@ -2176,17 +2178,17 @@
         },
         {
           id: 5,
-          name: "Suporte Ovelha | Papel Higiênico",
+          name: "Suporte Ovelha Papel Higiênico",
           description:
             "Suporte para rolo de papel higiênico com design de ovelha. Peça divertida e funcional, ideal para banheiros criativos. Confeccionada em ABS de alta resistência.",
-          basePrice: 54.9,
-          productionTime: "2-4 dias",
+          basePrice: 44.9,
+          productionTime: "4 dias",
           image:
             "https://github.com/oliveeira2610/Neolayerd_Catalogo/blob/main/images/Suportecarneiropapelhigienico.jpeg?raw=true",
           colors: [
             {
               name: "Preto + Branco",
-              hex: "#2D2D2D",
+              hex: "#PRETOBRANCO",
               priceMultiplier: 1,
               isCustom: false,
             },
@@ -2199,16 +2201,9 @@
           ],
           sizes: [
             {
-              name: "M",
+              name: "Único",
               dimensions: "21 x 10 x 13 cm",
-              price: 54.9,
-              isCustom: false,
-              ledAvailable: false,
-            },
-            {
-              name: "G",
-              dimensions: "26 x 12 x 16 cm",
-              price: 64.9,
+              price: 44.9,
               isCustom: false,
               ledAvailable: false,
             },
@@ -2231,56 +2226,14 @@
         },
         {
           id: 6,
-          name: "Chaveiro Estrela da Felicidade",
+          name: "Chaveiro Estrela",
           description:
             "Chaveiro estrela em impressão 3D. Símbolo de boas energias, perfeito para chaves, mochilas ou acessórios do dia a dia. Design exclusivo e leve.",
           basePrice: 34.9,
-          productionTime: "1-2 dias",
+          productionTime: "4 dias",
           image:
             "https://github.com/oliveeira2610/Neolayerd_Catalogo/blob/main/images/EstrelaDaFelicidade.jpg?raw=true",
           colors: [
-            {
-              name: "Azul",
-              hex: "#0052CC",
-              priceMultiplier: 1,
-              isCustom: false,
-            },
-            {
-              name: "Preto",
-              hex: "#1A1A1A",
-              priceMultiplier: 1,
-              isCustom: false,
-            },
-            {
-              name: "Cinza",
-              hex: "#5A5A5A",
-              priceMultiplier: 1,
-              isCustom: false,
-            },
-            {
-              name: "Branco",
-              hex: "#F5F5F5",
-              priceMultiplier: 1,
-              isCustom: false,
-            },
-            {
-              name: "Vermelho",
-              hex: "#D32F2F",
-              priceMultiplier: 1,
-              isCustom: false,
-            },
-            {
-              name: "Verde",
-              hex: "#388E3C",
-              priceMultiplier: 1,
-              isCustom: false,
-            },
-            {
-              name: "Dourado",
-              hex: "#CFB53B",
-              priceMultiplier: 1.25,
-              isCustom: false,
-            },
             {
               name: "Personalizada",
               hex: "#FF6B35",
@@ -2381,7 +2334,7 @@
             },
           ],
           ledOptions: [{ name: "Sem LED", price: 0 }],
-          categories: ["Chaveiro", "Colecionável", "Cultura-Pop"],
+          categories: ["Chaveiro", "Cultura-Pop"],
           specifications: {
             material: "ABS Premium",
             acabamento: "Lisa e brilhante",
@@ -3650,7 +3603,7 @@
             },
           ],
           ledOptions: [{ name: "Sem LED", price: 0 }],
-          categories: ["Porta-Copo", "Cultura-Pop", "Colecionável"],
+          categories: ["Porta-Copo", "Cultura-Pop"],
           specifications: {
             material: "ABS Premium",
             acabamento: "Lisa e brilhante",
@@ -3734,7 +3687,7 @@
             },
           ],
           ledOptions: [{ name: "Sem LED", price: 0 }],
-          categories: ["Porta-Copo", "Cultura-Pop", "Colecionável"],
+          categories: ["Porta-Copo", "Cultura-Pop"],
           specifications: {
             material: "ABS Premium",
             acabamento: "Lisa e brilhante",
@@ -4112,7 +4065,7 @@
             },
           ],
           ledOptions: [{ name: "Sem LED", price: 0 }],
-          categories: ["Arte-parede", "Decoração", "Escultura"],
+          categories: [, "Decoração", "Escultura"],
           specifications: {
             material: "ABS Premium",
             acabamento: "Lisa e brilhante",
@@ -4210,7 +4163,7 @@
             },
           ],
           ledOptions: [{ name: "Sem LED", price: 0 }],
-          categories: ["Arte-parede", "Decoração", "Animal"],
+          categories: [, "Decoração", "Animal"],
           specifications: {
             material: "ABS Premium",
             acabamento: "Lisa e brilhante",
@@ -4301,7 +4254,7 @@
             },
           ],
           ledOptions: [{ name: "Sem LED", price: 0 }],
-          categories: ["Arte-parede", "Decoração"],
+          categories: [, "Decoração"],
           specifications: {
             material: "ABS Premium",
             acabamento: "Lisa e brilhante",
@@ -4895,7 +4848,7 @@
             },
           ],
           ledOptions: [{ name: "Sem LED", price: 0 }],
-          categories: ["Chaveiro", "Colecionável", "Esporte"],
+          categories: ["Chaveiro", "Esporte"],
           specifications: {
             material: "ABS Premium",
             acabamento: "Lisa e brilhante",
@@ -4943,7 +4896,7 @@
             },
           ],
           ledOptions: [{ name: "Sem LED", price: 0 }],
-          categories: ["Chaveiro", "Colecionável", "Esporte"],
+          categories: ["Chaveiro", "Esporte"],
           specifications: {
             material: "ABS Premium",
             acabamento: "Lisa e brilhante",
@@ -5041,7 +4994,7 @@
             },
           ],
           ledOptions: [{ name: "Sem LED", price: 0 }],
-          categories: ["Escultura", "Colecionável", "Esporte"],
+          categories: ["Escultura", "Esporte"],
           specifications: {
             material: "ABS Premium",
             acabamento: "Lisa e brilhante",
@@ -5245,7 +5198,7 @@
             },
           ],
           ledOptions: [{ name: "Sem LED", price: 0 }],
-          categories: ["Escultura", "Colecionável", "Esporte"],
+          categories: ["Escultura", "Esporte"],
           specifications: {
             material: "ABS Premium",
             acabamento: "Lisa e brilhante",
@@ -5319,7 +5272,7 @@
             },
           ],
           ledOptions: [{ name: "Sem LED", price: 0 }],
-          categories: ["Decoração", "Automobilismo", "Colecionável"],
+          categories: ["Decoração", "Automobilismo"],
           specifications: {
             material: "ABS Premium",
             acabamento: "Lisa e brilhante",
@@ -5509,7 +5462,7 @@
             },
           ],
           ledOptions: [{ name: "Sem LED", price: 0 }],
-          categories: ["Escultura", "Colecionável", "Esporte"],
+          categories: ["Escultura", "Esporte"],
           specifications: {
             material: "ABS Premium",
             acabamento: "Lisa e brilhante",
@@ -5601,7 +5554,7 @@
             },
           ],
           ledOptions: [{ name: "Sem LED", price: 0 }],
-          categories: ["Troféu", "Colecionável", "Esporte"],
+          categories: ["Troféu", "Esporte"],
           specifications: {
             material: "ABS Premium",
             acabamento: "Lisa e brilhante",
@@ -6966,25 +6919,7 @@
                         </div>
                         <p class="product-description">${product.description}</p>
                         
-                        <div class="product-tags">
-                            ${product.sizes
-                              .filter((s) => !s.isCustom)
-                              .map(
-                                (size) =>
-                                  `<span class="tag">${size.name}</span>`,
-                              )
-                              .join("")}
-                        </div>
                         
-                        ${
-                          product.categories.length > 0
-                            ? `
-                            <div class="product-tags">
-                                ${product.categories.map((cat) => `<span class="tag">${cat}</span>`).join("")}
-                            </div>
-                        `
-                            : ""
-                        }
                         
                         <div class="product-footer">
                             <div>
