@@ -336,7 +336,7 @@
         opacity: 0.8;
       }
 
-      /* Products Grid */
+      /* Products Grid - CORREÇÃO PRINCIPAL AQUI */
       .products-section {
         padding: 2rem 0;
       }
@@ -372,6 +372,9 @@
         transition: var(--transition);
         cursor: pointer;
         border: 1px solid var(--gray-200);
+        display: flex;
+        flex-direction: column;
+        height: 100%;
       }
 
       .product-card:hover {
@@ -385,25 +388,34 @@
         height: 200px;
         object-fit: cover;
         background: linear-gradient(45deg, var(--gray-100), var(--gray-200));
+        flex-shrink: 0;
       }
 
       .product-content {
         padding: 1.25rem;
+        display: flex;
+        flex-direction: column;
+        flex: 1;
       }
 
       .product-header {
         display: flex;
-        justify-content: space-between;
-        align-items: flex-start;
+        flex-direction: column;
+        gap: 0.5rem;
         margin-bottom: 1rem;
+        flex: 0 0 auto;
       }
 
       .product-name {
-        width: 19vh;
         font-size: 1.125rem;
         font-weight: 600;
         color: var(--dark);
-        margin-bottom: 0.5rem;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        min-height: 2.8rem;
+        line-height: 1.4;
       }
 
       .product-description {
@@ -415,6 +427,7 @@
         -webkit-line-clamp: 2;
         -webkit-box-orient: vertical;
         overflow: hidden;
+        flex: 1;
       }
 
       .product-tags {
@@ -439,6 +452,7 @@
         padding-top: 1rem;
         border-top: 1px solid var(--gray-200);
         gap: 1rem;
+        flex-shrink: 0;
       }
 
       .product-time {
@@ -2291,8 +2305,8 @@
             "https://github.com/oliveeira2610/Neolayerd_Catalogo/blob/main/images/ChaveirosVingadores.jpg?raw=true",
           colors: [
             {
-              name: "Preto + Vermelho",
-              hex: "#2D2D2D",
+              name: "Preto + Branco",
+              hex: "#PRETOBRANCO",
               priceMultiplier: 1,
               isCustom: false,
             },
