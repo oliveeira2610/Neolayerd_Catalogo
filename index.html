@@ -798,6 +798,17 @@
         border: 2px solid rgba(0, 0, 0, 0.2);
       }
 
+      /* Meia branca meia cinza */
+      .color-option:has(.color-circle[style*="#BRANCOCINZA"]) .color-circle,
+      .color-option:has(.color-circle[style*="#BRANCOCINZAA"]) .color-circle {
+        background: linear-gradient(
+          45deg,
+          #ffffff 0% 50%,
+          #646464 50% 100%
+        ) !important;
+        border: 2px solid rgba(0, 0, 0, 0.2);
+      }
+
       /* Meia preta meia branca */
       .color-option:has(.color-circle[style*="#PRETOBRANCO"]) .color-circle,
       .color-option:has(.color-circle[style*="#PRETOBRANCOO"]) .color-circle {
@@ -6025,9 +6036,15 @@
             "https://github.com/oliveeira2610/Neolayerd_Catalogo/blob/main/images/VeladeIgnicaoocomPernas.png?raw=true",
           colors: [
             {
-              name: "Branco + Preto",
-              hex: "#BRANCOPRETO",
+              name: "Branco + Cinza",
+              hex: "#BRANCOCINZA",
               priceMultiplier: 1,
+              isCustom: false,
+            },
+            {
+              name: "Dourado",
+              hex: "#DOURADO",
+              priceMultiplier: 1.2,
               isCustom: false,
             },
             
